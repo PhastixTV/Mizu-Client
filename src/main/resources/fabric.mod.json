@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"dev.phastixtv.Mizuclient"
+          "dev.phastixtv.Mizu"
 		],
 		"fabric-datagen": [
 			"dev.phastixtv.MizuclientDataGenerator"
