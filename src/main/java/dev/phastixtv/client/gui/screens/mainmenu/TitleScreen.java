@@ -27,7 +27,7 @@ public class TitleScreen extends Screen {
     }
     public final String[] BUTTONS = {"Singleplayer", "Multiplayer", "Realms", "Options", "Login", "Quit"};
     public final ArrayList<GuiButton> buttonList = new ArrayList<GuiButton>();
-    public Identifier skin = new Identifier("textures/entity/player/wide/steve.png");
+    // public Identifier skin = new Identifier("textures/entity/player/wide/steve.png");
     public void init() {
         buttonList.clear();
         int initHeight = this.height / 2;
@@ -42,7 +42,7 @@ public class TitleScreen extends Screen {
         buttonList.add(new GuiButton(4, xMid + 90, initHeight, objWidth, objHeight, BUTTONS[4]));
         buttonList.add(new GuiButton(5, xMid + 150, initHeight, objWidth, objHeight, BUTTONS[5]));
 
-        skin = MinecraftClient.getInstance().getSkinProvider().getSkinTextures(new GameProfile(this.client.getSession().getUuidOrNull(), "cskin")).texture();
+        // skin = MinecraftClient.getInstance().getSkinProvider().getSkinTextures(new GameProfile(this.client.getSession().getUuidOrNull(), "cskin")).texture();
     }
 
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
@@ -65,10 +65,10 @@ public class TitleScreen extends Screen {
 
 
         int renderScale = 2 * this.height / 100;
-        RenderSystem.setShaderTexture(0, skin);
-        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
-        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 40 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
-        IFont.CONSOLAS.drawString(context.getMatrices(), this.client.getSession().getUsername(), 8 * renderScale + 3, this.height - IFont.CONSOLAS.getFontHeight() - 2, ColorUtil.getRainbow(4, 0.8f, 1), 1);
+        // RenderSystem.setShaderTexture(0, skin);
+        // context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
+        // context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 40 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
+        IFont.CONSOLAS.drawString(context.getMatrices(), this.client.getSession().getUsername(), 0 * renderScale + 3, this.height - IFont.CONSOLAS.getFontHeight() - 2, ColorUtil.getRainbow(4, 0.8f, 1), 1);
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
