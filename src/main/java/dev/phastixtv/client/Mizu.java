@@ -1,7 +1,6 @@
 package dev.phastixtv.client;
 
 import com.google.common.eventbus.EventBus;
-import dev.phastixtv.mixinterface.IMinecraftClient;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.client.MinecraftClient;
@@ -17,7 +16,6 @@ public class Mizu implements ModInitializer {
 	public static final String version = "0.0.1";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static EventBus eventBus = new EventBus();
-	public static IMinecraftClient iMinecraftClient;
 	public static MinecraftClient minecraftClient;
 	public static final Identifier TILESCREEN_BACKGROUND = new Identifier("mizuclient:textures/gui/title/background-mizu.png");
 	public static final Identifier TTILESCREEN_TITLE = new Identifier("mizuclient:textures/gui/title/mizu-logo-text-tp.png");
