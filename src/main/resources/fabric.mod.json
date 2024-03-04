@@ -1,25 +1,28 @@
 {
 	"schemaVersion": 1,
-	"id": "mizu-client",
+	"id": "mizuclient",
 	"version": "${version}",
-	"name": "mizu-client",
+	"name": "mizuclient",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"PhastixTV"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/mizu-client/icon.png",
+	"icon": "assets/mizuclient/textures/gui/title/mizu-logo.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-          "dev.phastixtv.Mizu"
+			"dev.phastixtv.client.Mizu"
 		],
 		"fabric-datagen": [
-			"dev.phastixtv.MizuclientDataGenerator"
+			"dev.phastixtv.client.MizuclientDataGenerator"
+		],
+		"client": [
+			"dev.phastixtv.client.MizuClient"
 		]
 	},
 	"mixins": [

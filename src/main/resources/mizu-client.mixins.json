@@ -3,7 +3,9 @@
 	"package": "dev.phastixtv.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"MinecraftClientMixin",
+		"TitleScreenMixin",
+		"MinecraftClientAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

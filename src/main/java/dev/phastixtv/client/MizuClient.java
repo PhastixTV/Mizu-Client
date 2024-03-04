@@ -1,4 +1,4 @@
-package dev.phastixtv;
+package dev.phastixtv.client;
 
 import net.fabricmc.api.ClientModInitializer;
 
