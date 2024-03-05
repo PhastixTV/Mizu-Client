@@ -1,10 +1,8 @@
 package dev.phastixtv.mixin;
 
-import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,6 +17,6 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "init()V", at = @At("HEAD"))
     private void init(CallbackInfo info) {
-        this.client.setScreen(new dev.phastixtv.client.gui.screens.mainmenu.TitleScreen()   );
+        this.client.setScreen(new dev.phastixtv.client.gui.screens.titlescreen.TitleScreen()   );
     }
 }

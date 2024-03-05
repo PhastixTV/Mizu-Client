@@ -1,8 +1,11 @@
-package dev.phastixtv.client.gui.screens.mainmenu;
+package dev.phastixtv.client.gui.screens.titlescreen.loginscreen;
 
+import dev.phastixtv.client.Mizu;
+import dev.phastixtv.client.util.login.AuthenticatorManager;
 import dev.phastixtv.mixin.MinecraftClientAccessor;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthResult;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticator;
+import lombok.Getter;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.EditBox;
@@ -13,18 +16,18 @@ import net.minecraft.client.session.Session;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Uuids;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public class LoginScreen extends Screen {
 
+public class LoginScreen extends Screen {
+    @Getter
     private TextFieldWidget emailField;
+    @Getter
     private TextFieldWidget passwordField;
-    private EditBox test;
-    private final Screen last;
     private final MinecraftClient client = MinecraftClient.getInstance();
+    private final Screen last;
 
     public LoginScreen(Screen last) {
         super(Text.literal("RegisterScreen"));
@@ -72,17 +75,15 @@ public class LoginScreen extends Screen {
     }
 
     public void login() {
-        String message;
         MicrosoftAuthenticator authenticator = new MicrosoftAuthenticator();
         MicrosoftAuthResult result = null;
         try {
             result = authenticator.loginWithCredentials(emailField.getText(), passwordField.getText());
-            client.setScreen(last);
+            Mizu.minecraftClient.setScreen(last);
         } catch (Exception e) {
             passwordField.setText("");
             return;
         }
-        message = "";
         assert result !=null;
 
         String uuidString = result.getProfile().getId();
@@ -98,7 +99,7 @@ public class LoginScreen extends Screen {
                 Optional.empty(),
                 Session.AccountType.LEGACY
         );
-        ((MinecraftClientAccessor) client).setSession(session);
+        ((MinecraftClientAccessor) Mizu.minecraftClient).setSession(session);
 
     }
 
