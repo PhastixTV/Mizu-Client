@@ -1,4 +1,4 @@
-package dev.phastixtv.client.gui.screens.mainmenu;
+package dev.phastixtv.client.gui.screens.titlescreen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.phastixtv.client.util.font.IFont;

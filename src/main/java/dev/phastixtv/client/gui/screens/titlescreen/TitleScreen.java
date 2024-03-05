@@ -1,12 +1,13 @@
-package dev.phastixtv.client.gui.screens.mainmenu;
+package dev.phastixtv.client.gui.screens.titlescreen;
 
-import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.phastixtv.client.Mizu;
+import dev.phastixtv.client.gui.screens.titlescreen.loginscreen.AuthenticatorScreen;
+import dev.phastixtv.client.gui.screens.titlescreen.loginscreen.LoginScreen;
 import dev.phastixtv.client.util.font.IFont;
+import dev.phastixtv.client.util.login.AuthenticatorManager;
 import dev.phastixtv.client.util.render.color.ColorUtil;
 import net.minecraft.SharedConstants;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
@@ -17,7 +18,6 @@ import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 
