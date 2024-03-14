@@ -3,6 +3,7 @@ package dev.phastixtv.client.gui.screens.mainmenu;
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.phastixtv.client.Mizu;
+import dev.phastixtv.client.gui.screens.TestScreen;
 import dev.phastixtv.client.util.font.IFont;
 import dev.phastixtv.client.util.render.color.ColorUtil;
 import net.minecraft.SharedConstants;
