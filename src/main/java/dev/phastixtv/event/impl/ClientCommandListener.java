@@ -1,12 +1,13 @@
-package dev.phastixtv.event;
+package dev.phastixtv.event.impl;
 
 import dev.phastixtv.client.Mizu;
+import dev.phastixtv.event.Event;
 
 import java.util.Arrays;
 
 //RICHTIGES EVENTSYSTEM FEHLT!!!
 
-public class ClientCommandListener extends Event{
+public class ClientCommandListener extends Event {
 
     private final String command_prefix = "!";
 

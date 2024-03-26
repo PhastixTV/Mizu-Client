@@ -1,5 +1,6 @@
-package dev.phastixtv.event;
+package dev.phastixtv.event.impl;
 
+import dev.phastixtv.event.Event;
 import net.minecraft.client.gui.screen.Screen;
 
 public class OpenScreenEvent extends Event {
