@@ -5,12 +5,14 @@ import dev.phastixtv.client.commands.CommandManager;
 import dev.phastixtv.client.modules.overlay.fps.FpsConfig;
 import dev.phastixtv.config.MizuConfig;
 import dev.phastixtv.util.player.MessageManager;
+import lombok.Getter;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@Getter
 public class Mizu implements ModInitializer {
     // This logger is used to write text to the console and the log file.
     // It is considered best practice to use your mod id as the logger's name.
@@ -52,53 +54,5 @@ public class Mizu implements ModInitializer {
         messageManager = new MessageManager();
         commandManager = new CommandManager();
 
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public MizuConfig getCONFIG() {
-        return CONFIG;
-    }
-
-    public FpsConfig getFpsConfig() {
-        return FPS_CONFIG;
-    }
-
-    public String getModId() {
-        return MOD_ID;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public Identifier getTilescreenBackground() {
-        return TILESCREEN_BACKGROUND;
-    }
-
-    public CommandManager getCommandManager() {
-        return commandManager;
-    }
-
-    public Identifier getTilescreenTitle() {
-        return TILESCREEN_TITLE;
-    }
-
-    public Logger getLogger() {
-        return logger;
-    }
-
-    public MessageManager getMessageManager() {
-        return messageManager;
-    }
-
-    public EventBus getEventBus() {
-        return eventBus;
-    }
-
-    public MinecraftClient getMinecraftClient() {
-        return minecraftClient;
     }
 }

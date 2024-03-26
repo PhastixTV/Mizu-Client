@@ -29,10 +29,10 @@ public class FpsOverlay implements IOverlay {
 
             int maxTextPosX = client.getWindow().getScaledWidth() - client.textRenderer.getWidth(this.getLongestString(text));
             int maxTextPosY = client.getWindow().getScaledHeight() - client.textRenderer.fontHeight;
-            int textPosX = Math.min(Math.round(Mizu.getInstance().getFpsConfig().offsetLeft() / (float) guiScale), maxTextPosX);
-            int textPosY = Math.min(Math.round(Mizu.getInstance().getFpsConfig().offsetTop() / (float) guiScale), maxTextPosY);
+            int textPosX = Math.min(Math.round(Mizu.getInstance().getFPS_CONFIG().offsetLeft() / (float) guiScale), maxTextPosX);
+            int textPosY = Math.min(Math.round(Mizu.getInstance().getFPS_CONFIG().offsetTop() / (float) guiScale), maxTextPosY);
 
-            int textColor = ((Mizu.getInstance().getFpsConfig().textAlpha() & 0xFF) << 24) | Mizu.getInstance().getFpsConfig().textColor();
+            int textColor = ((Mizu.getInstance().getFPS_CONFIG().textAlpha() & 0xFF) << 24) | Mizu.getInstance().getFpsConfig().textColor();
 
             for (int i = 0; i < text.size(); i++) {
                 String line = text.get(i);

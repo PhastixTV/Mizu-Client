@@ -15,7 +15,7 @@ public class ModMenuScreen extends BaseUIModelScreen<FlowLayout> {
     @Override
     protected void build(FlowLayout rootComponent) {
         rootComponent.childById(ButtonComponent.class, "test").onPress(buttonComponent -> {
-            Mizu.getInstance().getFpsConfig().showFps(!Mizu.getInstance().getFpsConfig().showFps());
+            Mizu.getInstance().getFPS_CONFIG().showFps(!Mizu.getInstance().getFPS_CONFIG().showFps());
         });
     }
 }

@@ -50,7 +50,7 @@ public class TitleScreen extends Screen {
 
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
 
-        context.drawTexture(Mizu.getInstance().getTilescreenBackground(), 0, 0, 20 * mouseX / this.width, 20 * mouseY / this.height, this.width + 20 * mouseX / this.width, this.height + 20 * mouseY / this.height, this.width + 40, this.height + 40);
+        context.drawTexture(Mizu.getInstance().getTILESCREEN_BACKGROUND(), 0, 0, 20 * mouseX / this.width, 20 * mouseY / this.height, this.width + 20 * mouseX / this.width, this.height + 20 * mouseY / this.height, this.width + 40, this.height + 40);
         context.fillGradient(0, 0, this.width, this.height, 0x00000000, 0xff000000);
 
 
@@ -59,7 +59,7 @@ public class TitleScreen extends Screen {
         IFont.CONSOLAS.drawString(context.getMatrices(), version, 1, 2, 0xFFFFFF, 1);
 
         RenderSystem.enableBlend();
-        context.drawTexture(Mizu.getInstance().getTilescreenTitle(), this.width / 2 - 110, this.height / 2 - 160, 0, 0, 220, 220, 220, 220);
+        context.drawTexture(Mizu.getInstance().getTILESCREEN_TITLE(), this.width / 2 - 110, this.height / 2 - 160, 0, 0, 220, 220, 220, 220);
         RenderSystem.disableBlend();
 
         for (GuiButton b : buttonList) {

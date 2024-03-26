@@ -23,7 +23,7 @@ public class KeyBindHandler {
 
     public static void registerKeyBinds() {
 
-        Mizu.getInstance().getLogger().info("Registering KeyBinds for " + Mizu.getInstance().getModId());
+        Mizu.getInstance().getLogger().info("Registering KeyBinds for " + Mizu.getInstance().getMOD_ID());
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (R_SHIFT_MOD_MENU.wasPressed()) {
