@@ -16,10 +16,13 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	maven { url 'https://oss.sonatype.org/content/repositories/snapshots/'}
 	maven { url 'https://litarvan.github.io/maven' }
 	maven { url 'https://maven.wispforest.io' }
 	maven { url "https://maven.shedaniel.me/" }
 	maven { url "https://maven.terraformersmc.com/releases/" }
+	mavenCentral()
+	jcenter()
 }
 
 fabricApi {

@@ -10,6 +10,7 @@ public class OptionMenuScreen extends BaseUIModelScreen<FlowLayout> {
     public OptionMenuScreen() {
         super(FlowLayout.class, DataSource.asset(new Identifier("mizuclient:menu/clickgui")));
     }
+
     @Override
     protected void build(FlowLayout rootComponent) {
         rootComponent.childById(ButtonComponent.class, "button-mods").onPress(buttonComponent -> {

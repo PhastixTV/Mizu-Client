@@ -9,21 +9,21 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
-public class KeyBindHandler{
+public class KeyBindHandler {
 
     public static final KeyBinding R_SHIFT_MOD_MENU = createKeybind(InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_SHIFT, Text.translatable("menu.rshift.modmenu.xml"), "Mizu Client");
 
     private static KeyBinding createKeybind(InputUtil.Type typeOfKeybinding, int keybind, Text keyName, String categoryName) {
-        return KeyBindingHelper.registerKeyBinding(new KeyBinding(keyName.toString(), typeOfKeybinding , keybind, categoryName));
+        return KeyBindingHelper.registerKeyBinding(new KeyBinding(keyName.toString(), typeOfKeybinding, keybind, categoryName));
     }
 
     private static KeyBinding createKeybind(InputUtil.Type typeOfKeybinding, int keybind, String keyName, String categoryName) {
-        return KeyBindingHelper.registerKeyBinding(new KeyBinding(keyName, typeOfKeybinding , keybind, categoryName));
+        return KeyBindingHelper.registerKeyBinding(new KeyBinding(keyName, typeOfKeybinding, keybind, categoryName));
     }
 
     public static void registerKeyBinds() {
 
-        Mizu.LOGGER.info("Registering KeyBinds for " + Mizu.MOD_ID);
+        Mizu.getInstance().getLogger().info("Registering KeyBinds for " + Mizu.getInstance().getModId());
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (R_SHIFT_MOD_MENU.wasPressed()) {
@@ -31,5 +31,6 @@ public class KeyBindHandler{
             }
 
         });
+
     }
 }

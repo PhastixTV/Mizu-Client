@@ -20,13 +20,12 @@ import java.util.HashMap;
 
 public class GlyphPage {
 
+    private final Font font;
+    private final boolean antiAliasing;
+    private final boolean fractionalMetrics;
+    private final HashMap<Character, Glyph> glyphCharacterMap = new HashMap<>();
     private int imgSize;
     private int maxFontHeight = -1;
-    private Font font;
-    private boolean antiAliasing;
-    private boolean fractionalMetrics;
-    private HashMap<Character, Glyph> glyphCharacterMap = new HashMap<>();
-
     private BufferedImage bufferedImage;
     private AbstractTexture loadedTexture;
 

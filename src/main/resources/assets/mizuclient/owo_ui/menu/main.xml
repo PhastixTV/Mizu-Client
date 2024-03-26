@@ -5,7 +5,7 @@
             <children>
                 <label id="title">
                     <positioning type="absolute">20,20</positioning>
-                    <text >fzmm.gui.title.main</text>
+                    <text>fzmm.gui.title.main</text>
                 </label>
 
                 <scroll direction="vertical">

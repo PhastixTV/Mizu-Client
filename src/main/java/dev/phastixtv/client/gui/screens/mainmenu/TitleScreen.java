@@ -1,10 +1,12 @@
 package dev.phastixtv.client.gui.screens.mainmenu;
 
+import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.phastixtv.client.Mizu;
 import dev.phastixtv.util.font.IFont;
 import dev.phastixtv.util.render.color.ColorUtil;
 import net.minecraft.SharedConstants;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
@@ -15,17 +17,21 @@ import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
 
 public class TitleScreen extends Screen {
+    public final String[] BUTTONS = {"Singleplayer", "Multiplayer", "Realms", "Options", "Login", "Quit"};
+    public final ArrayList<GuiButton> buttonList = new ArrayList<GuiButton>();
+
     public TitleScreen() {
         super(Text.literal("I am a title screen!"));
     }
-    public final String[] BUTTONS = {"Singleplayer", "Multiplayer", "Realms", "Options", "Login", "Quit"};
-    public final ArrayList<GuiButton> buttonList = new ArrayList<GuiButton>();
-    // public Identifier skin = new Identifier("textures/entity/player/wide/steve.png");
+
+    public Identifier skin = new Identifier("textures/entity/player/wide/steve.png");
     public void init() {
+        Mizu.getInstance().getMinecraftClient().getWindow().setTitle(Mizu.getInstance().getModId() + " [" + Mizu.getInstance().getVersion() + "] by " + Mizu.getInstance().getAuthor());
         buttonList.clear();
         int initHeight = this.height / 2;
         int objHeight = 50;
@@ -39,47 +45,52 @@ public class TitleScreen extends Screen {
         buttonList.add(new GuiButton(4, xMid + 90, initHeight, objWidth, objHeight, BUTTONS[4]));
         buttonList.add(new GuiButton(5, xMid + 150, initHeight, objWidth, objHeight, BUTTONS[5]));
 
-        // skin = MinecraftClient.getInstance().getSkinProvider().getSkinTextures(new GameProfile(this.client.getSession().getUuidOrNull(), "cskin")).texture();
+        skin = MinecraftClient.getInstance().getSkinProvider().getSkinTextures(new GameProfile(this.client.getSession().getUuidOrNull(), this.client.getName())).texture();
     }
 
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        context.drawTexture(Mizu.TILESCREEN_BACKGROUND, 0, 0, 20 * mouseX / this.width,  20 * mouseY / this.height, this.width + 20 * mouseX / this.width, this.height + 20 * mouseY / this.height, this.width + 40, this.height + 40);
+
+        context.drawTexture(Mizu.getInstance().getTilescreenBackground(), 0, 0, 20 * mouseX / this.width, 20 * mouseY / this.height, this.width + 20 * mouseX / this.width, this.height + 20 * mouseY / this.height, this.width + 40, this.height + 40);
         context.fillGradient(0, 0, this.width, this.height, 0x00000000, 0xff000000);
 
 
-        String version = "v" + Mizu.version + " - MC " + SharedConstants.getGameVersion().getName();
+        String version = "v" + Mizu.getInstance().getVersion() + " - MC " + SharedConstants.getGameVersion().getName();
         context.fill(0, 0, IFont.CONSOLAS.getStringWidth(version) + 4, IFont.CONSOLAS.getFontHeight() + 2, 0x90000000);
         IFont.CONSOLAS.drawString(context.getMatrices(), version, 1, 2, 0xFFFFFF, 1);
 
         RenderSystem.enableBlend();
-        context.drawTexture(Mizu.TTILESCREEN_TITLE, this.width / 2 - 110, this.height / 2 - 160, 0, 0, 220, 220, 220, 220);
+        context.drawTexture(Mizu.getInstance().getTilescreenTitle(), this.width / 2 - 110, this.height / 2 - 160, 0, 0, 220, 220, 220, 220);
         RenderSystem.disableBlend();
 
-        for(GuiButton b : buttonList) {
+        for (GuiButton b : buttonList) {
             b.drawButton(context, mouseX, mouseY);
         }
 
 
-
         int renderScale = 2 * this.height / 100;
-        // RenderSystem.setShaderTexture(0, skin);
-        // context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
-        // context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 40 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
-        IFont.CONSOLAS.drawString(context.getMatrices(), this.client.getSession().getUsername(), 0 * renderScale + 3, this.height - IFont.CONSOLAS.getFontHeight() - 2, ColorUtil.getRainbow(4, 0.8f, 1), 1);
+        int yOffset = 20;
+
+        RenderSystem.setShaderTexture(0, skin);
+        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2 - yOffset, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
+        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2 - yOffset, 8 * renderScale, 8 * renderScale, 40 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
+        IFont.CONSOLAS.drawString(context.getMatrices(), this.client.getSession().getUsername(), 3, this.height - IFont.CONSOLAS.getFontHeight() - 2, ColorUtil.getRainbow(4, 0.8f, 1), 1);
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             String b = BUTTONS[i];
             GuiButton guiButton = buttonList.get(i);
             float x = guiButton.x;
             float y = guiButton.y;
 
+            if (client == null) {
+                return false;
+            }
 
 
-            if(mouseX >= x - guiButton.width / 2 && mouseY >= y && mouseX <= x + guiButton.width / 2 && mouseY <= y + 60) {
+            if (mouseX >= x - (double) guiButton.width / 2 && mouseY >= y && mouseX <= x + (double) guiButton.width / 2 && mouseY <= y + 60) {
                 this.client.getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-                switch(b) {
+                switch (b) {
                     case "Singleplayer":
                         this.client.setScreen(new SelectWorldScreen(this));
                         break;

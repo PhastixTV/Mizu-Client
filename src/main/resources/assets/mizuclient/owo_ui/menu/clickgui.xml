@@ -8,12 +8,16 @@
                     <children>
                         <button id="button-mods">
                             <text>Mods</text>
-                            <margins><all>5</all></margins>
+                            <margins>
+                                <all>5</all>
+                            </margins>
                         </button>
 
                         <button id="button-cosmetics">
                             <text>Cosmetics</text>
-                            <margins><all>5</all></margins>
+                            <margins>
+                                <all>5</all>
+                            </margins>
                         </button>
                     </children>
 

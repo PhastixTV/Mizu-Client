@@ -11,15 +11,21 @@ import java.util.Random;
 import static org.lwjgl.opengl.GL11.*;
 
 /**
- *
  * @author superblaubeere27
  * @ported sprayD
- *
  */
 public class GlyphPageFontRenderer {
 
+    /**
+     * Array of RGB triplets defining the 16 standard chat colors followed by 16
+     * darker version of the same colors for drop shadows.
+     */
+    private final int[] colorCode = new int[32];
+    private final GlyphPage regularGlyphPage;
+    private final GlyphPage boldGlyphPage;
+    private final GlyphPage italicGlyphPage;
+    private final GlyphPage boldItalicGlyphPage;
     public Random fontRandom = new Random();
-
     /**
      * Current X coordinate at which to draw the next character.
      */
@@ -28,11 +34,6 @@ public class GlyphPageFontRenderer {
      * Current Y coordinate at which to draw the next character.
      */
     private float posY;
-    /**
-     * Array of RGB triplets defining the 16 standard chat colors followed by 16
-     * darker version of the same colors for drop shadows.
-     */
-    private int[] colorCode = new int[32];
     /**
      * Set if the "l" style (bold) is active in currently rendering string
      */
@@ -49,8 +50,6 @@ public class GlyphPageFontRenderer {
      * Set if the "m" style (strikethrough) is active in currently rendering string
      */
     private boolean strikethroughStyle;
-
-    private GlyphPage regularGlyphPage, boldGlyphPage, italicGlyphPage, boldItalicGlyphPage;
 
 
     public GlyphPageFontRenderer(GlyphPage regularGlyphPage, GlyphPage boldGlyphPage, GlyphPage italicGlyphPage,

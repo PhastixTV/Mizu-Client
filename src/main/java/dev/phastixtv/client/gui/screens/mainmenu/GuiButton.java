@@ -8,13 +8,13 @@ import net.minecraft.util.Identifier;
 
 public class GuiButton {
 
-    private int index = 0;
+    private final Identifier icon;
     public int buttonId;
     public int x, y;
     public int width, heighIn;
     public String buttonText;
+    private int index = 0;
     private boolean movingUp;
-    private Identifier icon;
 
     public GuiButton(int buttonId, int x, int y, int width, int heightIn, String buttonText) {
         this.buttonId = buttonId;

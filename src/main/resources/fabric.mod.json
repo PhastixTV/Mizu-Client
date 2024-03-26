@@ -1,40 +1,40 @@
 {
-	"schemaVersion": 1,
-	"id": "mizuclient",
-	"version": "${version}",
-	"name": "mizuclient",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"PhastixTV"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/mizuclient/textures/gui/title/mizu-logo.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"dev.phastixtv.client.Mizu"
-		],
-		"fabric-datagen": [
-			"dev.phastixtv.client.MizuclientDataGenerator"
-		],
-		"client": [
-			"dev.phastixtv.client.MizuClient"
-		]
-	},
-	"mixins": [
-		"mizu-client.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.15.7",
-		"minecraft": "~1.20.4",
-		"java": ">=17",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+  "schemaVersion": 1,
+  "id": "mizuclient",
+  "version": "${version}",
+  "name": "mizuclient",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "PhastixTV"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/mizuclient/textures/gui/title/mizu-logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.phastixtv.client.Mizu"
+    ],
+    "fabric-datagen": [
+      "dev.phastixtv.client.MizuclientDataGenerator"
+    ],
+    "client": [
+      "dev.phastixtv.client.MizuClient"
+    ]
+  },
+  "mixins": [
+    "mizu-client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.7",
+    "minecraft": "~1.20.4",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
 }
