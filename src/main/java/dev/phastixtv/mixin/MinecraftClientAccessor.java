@@ -11,4 +11,6 @@ public interface MinecraftClientAccessor {
     @Mutable @Accessor("session")
     void setSession(Session session);
 
+    @Accessor("currentFps")
+    int getCurrentFps();
 }

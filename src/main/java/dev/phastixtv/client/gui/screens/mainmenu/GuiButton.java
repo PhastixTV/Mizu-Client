@@ -1,8 +1,8 @@
 package dev.phastixtv.client.gui.screens.mainmenu;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import dev.phastixtv.client.util.font.IFont;
-import dev.phastixtv.client.util.render.color.ColorUtil;
+import dev.phastixtv.util.font.IFont;
+import dev.phastixtv.util.render.color.ColorUtil;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Identifier;
 

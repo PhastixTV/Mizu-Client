@@ -1,4 +1,4 @@
-package dev.phastixtv.client.event;
+package dev.phastixtv.event;
 
 import net.minecraft.client.gui.screen.Screen;
 

@@ -1,5 +1,6 @@
 package dev.phastixtv.client.gui.screens.menu;
 
+import dev.phastixtv.client.Mizu;
 import io.wispforest.owo.ui.base.BaseUIModelScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
 import io.wispforest.owo.ui.component.Components;
@@ -7,28 +8,22 @@ import io.wispforest.owo.ui.container.FlowLayout;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.awt.*;
+
 public class ModMenuScreen extends BaseUIModelScreen<FlowLayout> {
 
-    Boolean test_button = true;
-
     public ModMenuScreen() {
-        super(FlowLayout.class, DataSource.asset(new Identifier("mizuclient:menu/banner_editor")));
+        super(FlowLayout.class, DataSource.asset(new Identifier("mizuclient:menu/modmenu")));
     }
 
     @Override
     protected void build(FlowLayout rootComponent) {
-        /*
         rootComponent.childById(ButtonComponent.class, "test").onPress(buttonComponent -> {
-            if (test_button) {
-                buttonComponent.setMessage(Text.literal("FALSE"));
-                test_button = false;
-            }else if (!test_button) {
-                buttonComponent.setMessage(Text.literal("ENABLED"));
-                test_button = true;
-            } else
-                System.out.println("Test not work");
+            if (Mizu.FPS_CONFIG.showFps()) {
+                 Mizu.FPS_CONFIG.showFps(false);
+            }else {
+                Mizu.FPS_CONFIG.showFps(true);
+            }
         });
-
-         */
     }
 }

@@ -1,4 +1,4 @@
-package dev.phastixtv.client.util.font;
+package dev.phastixtv.util.font;
 
 public class IFont {
     public static GlyphPageFontRenderer CONSOLAS = GlyphPageFontRenderer.create("Consolas",

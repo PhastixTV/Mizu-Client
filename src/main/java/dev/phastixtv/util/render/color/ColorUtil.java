@@ -1,4 +1,4 @@
-package dev.phastixtv.client.util.render.color;
+package dev.phastixtv.util.render.color;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.render.BufferBuilder;

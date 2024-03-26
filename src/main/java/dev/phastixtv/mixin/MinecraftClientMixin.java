@@ -1,7 +1,7 @@
 package dev.phastixtv.mixin;
 
 import dev.phastixtv.client.Mizu;
-import dev.phastixtv.client.event.OpenScreenEvent;
+import dev.phastixtv.event.OpenScreenEvent;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import org.spongepowered.asm.mixin.Mixin;

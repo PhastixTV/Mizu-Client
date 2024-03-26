@@ -1,4 +1,4 @@
-package dev.phastixtv.client.util.render.color;
+package dev.phastixtv.util.render.color;
 
 public abstract class RenderColor implements Cloneable {
 

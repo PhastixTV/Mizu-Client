@@ -1,4 +1,4 @@
-package dev.phastixtv.client.event;
+package dev.phastixtv.event;
 
 public class Event {
     private boolean cancelled = false;

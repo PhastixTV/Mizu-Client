@@ -1,4 +1,4 @@
-package dev.phastixtv.client.util.font;
+package dev.phastixtv.util.font;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.render.*;
