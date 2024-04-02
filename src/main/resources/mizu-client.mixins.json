@@ -6,7 +6,8 @@
     "InGameHudMixin",
     "MinecraftClientAccessor",
     "MinecraftClientMixin",
-    "TitleScreenMixin"
+    "TitleScreenMixin",
+    "PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -3,7 +3,6 @@ package dev.phastixtv.client.modules.overlay.fps;
 import io.wispforest.owo.config.annotation.Config;
 import io.wispforest.owo.config.annotation.Modmenu;
 
-@Modmenu(modId = "mizuclient")
 @Config(name = "fps", wrapperName = "FpsConfig")
 public class FpsConfigModel {
 
@@ -11,7 +10,7 @@ public class FpsConfigModel {
 
     public boolean drawWithShadows = false;
 
-    public boolean drawWithBackground = true;
+    public boolean drawWithBackground = false;
 
     public int textSpacing = 5;
 
@@ -19,7 +18,7 @@ public class FpsConfigModel {
 
     public int textAlpha = 230;
 
-    public int offsetLeft = 4;
+    public int offsetLeft = 400;
 
     public int offsetTop = 4;
 

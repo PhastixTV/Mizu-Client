@@ -1,7 +1,7 @@
 package dev.phastixtv.client.keybinds;
 
 import dev.phastixtv.client.Mizu;
-import dev.phastixtv.client.gui.screens.menu.OptionMenuScreen;
+import dev.phastixtv.client.gui.screens.menu.ModMenuScreen;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
@@ -27,7 +27,7 @@ public class KeyBindHandler {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (R_SHIFT_MOD_MENU.wasPressed()) {
-                client.setScreen(new OptionMenuScreen());
+                client.setScreen(new ModMenuScreen());
             }
 
         });

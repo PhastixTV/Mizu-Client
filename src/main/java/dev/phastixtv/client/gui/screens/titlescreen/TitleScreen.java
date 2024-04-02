@@ -1,10 +1,12 @@
-package dev.phastixtv.client.gui.screens.mainmenu;
+package dev.phastixtv.client.gui.screens.titlescreen;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.phastixtv.client.Mizu;
 import dev.phastixtv.util.font.IFont;
 import dev.phastixtv.util.render.color.ColorUtil;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -29,9 +31,10 @@ public class TitleScreen extends Screen {
         super(Text.literal("I am a title screen!"));
     }
 
-    public Identifier skin = new Identifier("textures/entity/player/wide/steve.png");
+    private Identifier skin = Mizu.getInstance().getSkin();
+
     public void init() {
-        Mizu.getInstance().getMinecraftClient().getWindow().setTitle(Mizu.getInstance().getModId() + " [" + Mizu.getInstance().getVersion() + "] by " + Mizu.getInstance().getAuthor());
+        Mizu.getInstance().getMinecraftClient().getWindow().setTitle(Mizu.getInstance().getMOD_ID() + " [" + Mizu.getInstance().getVersion() + "] by " + Mizu.getInstance().getAuthor());
         buttonList.clear();
         int initHeight = this.height / 2;
         int objHeight = 50;
@@ -71,9 +74,9 @@ public class TitleScreen extends Screen {
         int yOffset = 20;
 
         RenderSystem.setShaderTexture(0, skin);
-        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2 - yOffset, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
-        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2 - yOffset, 8 * renderScale, 8 * renderScale, 40 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
-        IFont.CONSOLAS.drawString(context.getMatrices(), this.client.getSession().getUsername(), 3, this.height - IFont.CONSOLAS.getFontHeight() - 2, ColorUtil.getRainbow(4, 0.8f, 1), 1);
+        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
+        context.drawTexture(skin, 2, this.height - 8 * renderScale - 2, 8 * renderScale, 8 * renderScale, 40 * renderScale, 8 * renderScale, 8 * renderScale, 8 * renderScale, 64 * renderScale, 64 * renderScale);
+        IFont.CONSOLAS.drawString(context.getMatrices(), this.client.getSession().getUsername(), 8 * renderScale + 3, this.height - IFont.CONSOLAS.getFontHeight() - 2, ColorUtil.getRainbow(4, 0.8f, 1), 1);
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {

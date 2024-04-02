@@ -1,5 +1,7 @@
-package dev.phastixtv.client.gui.screens.mainmenu;
+package dev.phastixtv.client.gui.screens.titlescreen;
 
+import com.mojang.authlib.GameProfile;
+import dev.phastixtv.client.Mizu;
 import dev.phastixtv.mixin.MinecraftClientAccessor;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthResult;
 import fr.litarvan.openauth.microsoft.MicrosoftAuthenticator;
@@ -98,7 +100,8 @@ public class LoginScreen extends Screen {
                 Session.AccountType.MOJANG
         );
         ((MinecraftClientAccessor) client).setSession(session);
-
+        Mizu.getInstance().setSkin(Mizu.getInstance().getMinecraftClient().getSkinProvider().getSkinTextures(
+                new GameProfile(this.client.getSession().getUuidOrNull(), this.client.getName())).texture());
     }
 
     @Override

@@ -2,10 +2,13 @@ package dev.phastixtv.client;
 
 import com.google.common.eventbus.EventBus;
 import dev.phastixtv.client.commands.CommandManager;
+import dev.phastixtv.client.modules.overlay.coordinates.CoordinateConfig;
 import dev.phastixtv.client.modules.overlay.fps.FpsConfig;
+import dev.phastixtv.client.modules.overlay.fps.FpsOverlay;
 import dev.phastixtv.config.MizuConfig;
 import dev.phastixtv.util.player.MessageManager;
 import lombok.Getter;
+import lombok.Setter;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
@@ -21,6 +24,7 @@ public class Mizu implements ModInitializer {
     private static Mizu instance;
     private MizuConfig CONFIG;
     private FpsConfig FPS_CONFIG;
+    private CoordinateConfig COORDINATE_CONFIG;
     private String MOD_ID;
     private String version;
     private String author;
@@ -31,6 +35,8 @@ public class Mizu implements ModInitializer {
     private Identifier TILESCREEN_TITLE;
     private EventBus eventBus;
     private MinecraftClient minecraftClient;
+    @Setter
+    private Identifier skin;
 
     public static Mizu getInstance() {
         return instance;
@@ -47,12 +53,13 @@ public class Mizu implements ModInitializer {
 
         CONFIG = MizuConfig.createAndLoad();
         FPS_CONFIG = FpsConfig.createAndLoad();
+        COORDINATE_CONFIG = CoordinateConfig.createAndLoad();
         logger = LoggerFactory.getLogger(MOD_ID);
         TILESCREEN_BACKGROUND = new Identifier("mizuclient:textures/gui/title/background-mizu.png");
         TILESCREEN_TITLE = new Identifier("mizuclient:textures/gui/title/mizu-logo-text-tp.png");
         eventBus = new EventBus();
         messageManager = new MessageManager();
         commandManager = new CommandManager();
-
+        skin = new Identifier("textures/entity/player/wide/steve.png");
     }
 }

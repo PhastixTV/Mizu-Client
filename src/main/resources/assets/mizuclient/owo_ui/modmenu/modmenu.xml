@@ -1,0 +1,52 @@
+<owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.20.3/owo-ui.xsd">
+    <components>
+        <flow-layout direction="vertical">
+            <children>
+                <flow-layout direction="horizontal">
+                    <children>
+                        <button id="fps-button">
+                            <text>FPS: disabled</text>
+                            <margins>
+                                <all>5</all>
+                            </margins>
+
+                            <padding>
+                                <all>5</all>
+                            </padding>
+                        </button>
+
+                        <button id="test-button">
+                            <text>Gay</text>
+                        </button>
+                    </children>
+                    <surface>
+                        <panel dark="true"/>
+                    </surface>
+
+                    <sizing>
+                        <vertical method="fill">75</vertical>
+                        <horizontal method="fill">75</horizontal>
+                    </sizing>
+
+                    <horizontal-alignment>center</horizontal-alignment>
+
+                    <allow-overflow>true</allow-overflow>
+
+                    <padding>
+                        <all>3</all>
+                    </padding>
+
+                </flow-layout>
+            </children>
+
+            <vertical-alignment>center</vertical-alignment>
+            <horizontal-alignment>center</horizontal-alignment>
+
+            <surface>
+                <vanilla-translucent/>
+            </surface>
+
+        </flow-layout>
+    </components>
+</owo-ui>

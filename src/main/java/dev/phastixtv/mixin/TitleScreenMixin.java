@@ -17,6 +17,6 @@ public class TitleScreenMixin extends Screen {
 
     @Inject(method = "init()V", at = @At("HEAD"))
     private void init(CallbackInfo info) {
-        this.client.setScreen(new dev.phastixtv.client.gui.screens.mainmenu.TitleScreen());
+        this.client.setScreen(new dev.phastixtv.client.gui.screens.titlescreen.TitleScreen());
     }
 }
