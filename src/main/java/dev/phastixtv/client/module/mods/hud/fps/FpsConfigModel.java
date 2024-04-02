@@ -1,7 +1,6 @@
-package dev.phastixtv.client.modules.overlay.fps;
+package dev.phastixtv.client.module.mods.hud.fps;
 
 import io.wispforest.owo.config.annotation.Config;
-import io.wispforest.owo.config.annotation.Modmenu;
 
 @Config(name = "fps", wrapperName = "FpsConfig")
 public class FpsConfigModel {
@@ -18,11 +17,11 @@ public class FpsConfigModel {
 
     public int textAlpha = 230;
 
-    public int offsetLeft = 400;
+    public int offsetLeft = 4;
 
     public int offsetTop = 4;
 
-    public boolean showFps = true;
+    public boolean showFps = false;
 
     public String fps = " FPS";
 }

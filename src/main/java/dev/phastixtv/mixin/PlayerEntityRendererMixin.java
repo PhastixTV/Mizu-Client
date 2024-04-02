@@ -1,7 +1,7 @@
 package dev.phastixtv.mixin;
 
-import dev.phastixtv.client.modules.cosmetics.CapeRenderer;
-import dev.phastixtv.client.modules.cosmetics.Deadmau5EarsRenderer;
+import dev.phastixtv.client.module.mods.cosmetics.CapeRenderer;
+import dev.phastixtv.client.module.mods.cosmetics.Deadmau5EarsRenderer;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.LivingEntityRenderer;

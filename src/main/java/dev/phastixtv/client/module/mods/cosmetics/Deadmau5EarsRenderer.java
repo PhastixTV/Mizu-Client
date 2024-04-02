@@ -1,4 +1,4 @@
-package dev.phastixtv.client.modules.cosmetics;
+package dev.phastixtv.client.module.mods.cosmetics;
 
 import dev.phastixtv.client.gui.screens.titlescreen.TitleScreen;
 import net.minecraft.client.MinecraftClient;

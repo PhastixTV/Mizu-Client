@@ -1,9 +1,12 @@
 package dev.phastixtv.event;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 public class EventSystem {
 
+    @Getter
     private static ArrayList<Event> events;
 
     public EventSystem() {
@@ -14,7 +17,4 @@ public class EventSystem {
         events.add(event);
     }
 
-    public static ArrayList<Event> getEvents() {
-        return events;
-    }
 }

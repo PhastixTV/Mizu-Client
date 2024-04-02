@@ -1,7 +1,7 @@
 package dev.phastixtv.config;
 
-import dev.phastixtv.client.modules.overlay.coordinates.CoordinateConfig;
-import dev.phastixtv.client.modules.overlay.fps.FpsConfig;
+import dev.phastixtv.client.module.mods.hud.coordinate.CoordinateConfig;
+import dev.phastixtv.client.module.mods.hud.fps.FpsConfig;
 
 public class ConfigManager {
 

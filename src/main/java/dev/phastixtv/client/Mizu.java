@@ -2,9 +2,10 @@ package dev.phastixtv.client;
 
 import com.google.common.eventbus.EventBus;
 import dev.phastixtv.client.commands.CommandManager;
-import dev.phastixtv.client.modules.overlay.coordinates.CoordinateConfig;
-import dev.phastixtv.client.modules.overlay.fps.FpsConfig;
-import dev.phastixtv.client.modules.overlay.fps.FpsOverlay;
+import dev.phastixtv.client.module.ModuleManager;
+import dev.phastixtv.client.module.mods.hud.coordinate.CoordinateConfig;
+import dev.phastixtv.client.module.mods.hud.fps.FpsConfig;
+import dev.phastixtv.client.module.mods.hud.fps.FpsHud;
 import dev.phastixtv.config.MizuConfig;
 import dev.phastixtv.util.player.MessageManager;
 import lombok.Getter;
@@ -17,9 +18,6 @@ import org.slf4j.LoggerFactory;
 
 @Getter
 public class Mizu implements ModInitializer {
-    // This logger is used to write text to the console and the log file.
-    // It is considered best practice to use your mod id as the logger's name.
-    // That way, it's clear which mod wrote info, warnings, and errors.
 
     private static Mizu instance;
     private MizuConfig CONFIG;

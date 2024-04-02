@@ -1,7 +1,7 @@
 package dev.phastixtv.mixin;
 
-import dev.phastixtv.client.modules.overlay.coordinates.CoordinateOverlay;
-import dev.phastixtv.client.modules.overlay.fps.FpsOverlay;
+import dev.phastixtv.client.module.mods.hud.coordinate.CoordinateHud;
+import dev.phastixtv.client.module.mods.hud.fps.FpsHud;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,7 +17,7 @@ public abstract class InGameHudMixin {
 
     @Inject(method = "render", at = @At("TAIL"))
     public void render(DrawContext context, float tickDelta, CallbackInfo ci) {
-        new CoordinateOverlay(context, tickDelta);
-        new FpsOverlay(context, tickDelta);
+        new CoordinateHud(context, tickDelta);
+        new FpsHud(context, tickDelta);
     }
 }

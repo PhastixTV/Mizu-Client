@@ -1,4 +1,4 @@
-package dev.phastixtv.client.modules.overlay.coordinates;
+package dev.phastixtv.client.module.mods.hud.coordinate;
 
 import io.wispforest.owo.config.annotation.Config;
 
