@@ -1,10 +1,9 @@
-package dev.phastixtv.client.module.mods.hud.coordinate;
+package dev.phastixtv.client.module.mods.hud.ping;
 
 import io.wispforest.owo.config.annotation.Config;
 
-@Config(name = "coordinate", wrapperName = "CoordinateConfig")
-public class CoordinateConfigModel {
-
+@Config(name = "ping", wrapperName = "PingConfig")
+public class PingConfigModel {
     public boolean enabled = false;
 
     public boolean drawWithShadows = false;
@@ -17,9 +16,9 @@ public class CoordinateConfigModel {
 
     public int textAlpha = 230;
 
-    public int offsetLeft = 40;
+    public int offsetLeft = 4;
 
-    public int offsetTop = 100;
+    public int offsetTop = 8;
 
-    public boolean showCoordinates = false;
+    public boolean showPing = false;
 }

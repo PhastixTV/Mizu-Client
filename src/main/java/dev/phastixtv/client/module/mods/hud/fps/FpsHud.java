@@ -12,15 +12,17 @@ import java.util.List;
 
 public class FpsHud extends Module {
 
+
     private final DrawContext context;
     private final float tickDelta;
-    private final MinecraftClient client = Mizu.getInstance().getMinecraftClient();
 
     public FpsHud(DrawContext context, float tickDelta) {
         super("fps-hud", ModuleCategory.HUD, Mizu.getInstance().getFPS_CONFIG().showFps());
+
         this.context = context;
         this.tickDelta = tickDelta;
         render(context, tickDelta);
+
     }
 
     public void render(DrawContext context, float tickDelta) {
@@ -30,8 +32,8 @@ public class FpsHud extends Module {
 
             String text = ((MinecraftClientAccessor) Mizu.getInstance().getMinecraftClient()).getCurrentFps() + Mizu.getInstance().getFPS_CONFIG().fps();
 
-            int maxTextPosX = client.getWindow().getScaledWidth() - client.textRenderer.getWidth(text);
-            int maxTextPosY = client.getWindow().getScaledHeight() - client.textRenderer.fontHeight;
+            int maxTextPosX = this.client.getWindow().getScaledWidth() - this.client.textRenderer.getWidth(text);
+            int maxTextPosY = this.client.getWindow().getScaledHeight() - this.client.textRenderer.fontHeight;
             int textPosX = Math.min(Math.round(Mizu.getInstance().getFPS_CONFIG().offsetLeft() / (float) guiScale), maxTextPosX);
             int textPosY = Math.min(Math.round(Mizu.getInstance().getFPS_CONFIG().offsetTop() / (float) guiScale), maxTextPosY);
 
@@ -39,13 +41,5 @@ public class FpsHud extends Module {
 
             context.drawText(client.textRenderer, text, textPosX, textPosY, textColor, Mizu.getInstance().getFPS_CONFIG().drawWithShadows());
         }
-    }
-
-    private String getLongestString(List<String> textLines) {
-        return textLines
-                .stream()
-                .reduce("",
-                        (longestText, text) -> longestText.length() < text.length() ? text : longestText
-                );
     }
 }

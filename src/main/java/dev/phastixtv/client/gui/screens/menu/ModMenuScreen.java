@@ -1,6 +1,7 @@
 package dev.phastixtv.client.gui.screens.menu;
 
 import dev.phastixtv.client.Mizu;
+import dev.phastixtv.client.module.ModuleManager;
 import dev.phastixtv.client.module.mods.hud.fps.FpsConfig;
 import io.wispforest.owo.ui.base.BaseUIModelScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
@@ -27,5 +28,11 @@ public class ModMenuScreen extends BaseUIModelScreen<FlowLayout> {
                 config.showFps(false);
             }
         });
+/*
+        rootComponent.childById(ButtonComponent.class, "test-button").onPress(buttonComponent -> {
+            ModuleManager moduleManager = new ModuleManager();
+            Mizu.getInstance().getMinecraftClient().player.sendMessage(Text.literal(moduleManager.getModuleByNameTest("fps-hud")));
+        });
+ */
     }
 }

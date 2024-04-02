@@ -6,6 +6,7 @@ import dev.phastixtv.client.module.ModuleManager;
 import dev.phastixtv.client.module.mods.hud.coordinate.CoordinateConfig;
 import dev.phastixtv.client.module.mods.hud.fps.FpsConfig;
 import dev.phastixtv.client.module.mods.hud.fps.FpsHud;
+import dev.phastixtv.client.module.mods.hud.ping.PingConfig;
 import dev.phastixtv.config.MizuConfig;
 import dev.phastixtv.util.player.MessageManager;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Mizu implements ModInitializer {
     private MizuConfig CONFIG;
     private FpsConfig FPS_CONFIG;
     private CoordinateConfig COORDINATE_CONFIG;
+    private PingConfig PING_CONFIG;
     private String MOD_ID;
     private String version;
     private String author;
@@ -52,6 +54,7 @@ public class Mizu implements ModInitializer {
         CONFIG = MizuConfig.createAndLoad();
         FPS_CONFIG = FpsConfig.createAndLoad();
         COORDINATE_CONFIG = CoordinateConfig.createAndLoad();
+        PING_CONFIG = PingConfig.createAndLoad();
         logger = LoggerFactory.getLogger(MOD_ID);
         TILESCREEN_BACKGROUND = new Identifier("mizuclient:textures/gui/title/background-mizu.png");
         TILESCREEN_TITLE = new Identifier("mizuclient:textures/gui/title/mizu-logo-text-tp.png");
