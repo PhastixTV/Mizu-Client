@@ -7,15 +7,18 @@ import net.minecraft.item.Items;
 
 public enum ModuleCategory {
 
-    HUD(new ItemStack(Items.PAINTING)),
-    SERVER(new ItemStack(Items.COMPASS)),
-    MECHANIC(new ItemStack(Items.REDSTONE)),
-    COSMETICS(new ItemStack(Items.DIAMOND_CHESTPLATE));
+    HUD(new ItemStack(Items.PAINTING), "Hud"),
+    SERVER(new ItemStack(Items.COMPASS), "Server"),
+    MECHANIC(new ItemStack(Items.REDSTONE), "Mechanic"),
+    COSMETICS(new ItemStack(Items.DIAMOND_CHESTPLATE), "Cosmetics");
 
     @Getter
     private final ItemStack item;
+    @Getter
+    private final String displayName;
 
-    ModuleCategory(ItemStack item) {
+    ModuleCategory(ItemStack item, String displayName) {
         this.item = item;
+        this.displayName = displayName;
     }
 }

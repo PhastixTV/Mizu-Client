@@ -3,26 +3,17 @@ package dev.phastixtv.client.module.mods.hud.coordinate;
 import dev.phastixtv.client.Mizu;
 import dev.phastixtv.client.module.Module;
 import dev.phastixtv.client.module.ModuleCategory;
-import dev.phastixtv.client.module.mods.hud.IHud;
-import dev.phastixtv.client.module.mods.hud.coordinate.CoordinateConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 
-import java.util.List;
-
 public class CoordinateHud extends Module {
-    private final DrawContext context;
-    private final float tickDelta;
     private final MinecraftClient client = Mizu.getInstance().getMinecraftClient();
 
-    public CoordinateHud(DrawContext context, float tickDelta) {
+    public CoordinateHud() {
         super("coordinate-hud", ModuleCategory.HUD, Mizu.getInstance().getCOORDINATE_CONFIG().showCoordinates());
-        this.context = context;
-        this.tickDelta = tickDelta;
-        render(context, tickDelta);
     }
 
-    public void render(DrawContext context, float tickDelta) {
+    public Module render(DrawContext context, float tickDelta) {
         if (!Mizu.getInstance().getMinecraftClient().options.hudHidden && Mizu.getInstance().getCOORDINATE_CONFIG().textAlpha() > 3 && Mizu.getInstance().getCOORDINATE_CONFIG().showCoordinates() && client.player != null) {
 
             double guiScale = Mizu.getInstance().getMinecraftClient().getWindow().getScaleFactor();
@@ -38,5 +29,6 @@ public class CoordinateHud extends Module {
 
             context.drawText(client.textRenderer, text, textPosX, textPosY, textColor, Mizu.getInstance().getCOORDINATE_CONFIG().drawWithShadows());
         }
+        return null;
     }
 }

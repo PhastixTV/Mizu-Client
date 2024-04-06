@@ -1,31 +1,34 @@
 package dev.phastixtv.client.module;
 
-import dev.phastixtv.client.module.mods.hud.coordinate.CoordinateHud;
 import dev.phastixtv.client.module.mods.hud.fps.FpsHud;
-import dev.phastixtv.client.module.mods.hud.ping.PingHud;
-import dev.phastixtv.event.Event;
 import lombok.Getter;
-import net.minecraft.client.gui.DrawContext;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ModuleManager {
+import static dev.phastixtv.client.module.ModuleCategory.*;
+
+public class ModuleManager{
 
     @Getter
-    private static ArrayList<Module> moduleList;
+    private static ArrayList<Module> moduleList = new ArrayList<>();
 
     public ModuleManager() {
-        moduleList = new ArrayList<>();
-    }
-/*
-    public void init() {
-        // HUD
-        moduleList.add(new FpsHud());
-        moduleList.add(new CoordinateHud());
-        moduleList.add(new PingHud());
+        init();
     }
 
- */
+    public void init() {
+        // Hud
+
+
+        // Server
+
+
+        // Mechanic
+
+
+        // Cosmetics
+    }
 
     public Module loadModules() {
         for (Module module : moduleList) {
@@ -34,12 +37,14 @@ public class ModuleManager {
         return null;
     }
 
-    public String loadModulesName() {
-        StringBuilder namesBuilder = new StringBuilder();
+    public List<Module> loadModulesFromCategory(ModuleCategory category) {
+        List<Module> filteredModule = new ArrayList<>();
         for (Module module : moduleList) {
-            namesBuilder.append(module.getName()).append(", ");
+            if (module.getCategory() == category) {
+                filteredModule.add(module);
+            }
         }
-        return namesBuilder.append("nix funktioniert").toString();
+        return filteredModule;
     }
 
     public Module getModule(Class<? extends Module> classModule) {
@@ -51,12 +56,12 @@ public class ModuleManager {
         return null;
     }
 
-    public Module getModuleByName(String name) {
+    public String getModuleByName(String name) {
         for (Module module : moduleList) {
             if (name.equalsIgnoreCase(module.getName())) {
-                return module;
+                return module.getName();
             }
         }
-        return null;
+        return moduleList.toString();
     }
 }

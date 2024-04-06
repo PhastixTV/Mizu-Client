@@ -1,31 +1,25 @@
 package dev.phastixtv.client.module.mods.hud.fps;
 
+import com.google.common.eventbus.Subscribe;
 import dev.phastixtv.client.Mizu;
 import dev.phastixtv.client.module.Module;
 import dev.phastixtv.client.module.ModuleCategory;
+import dev.phastixtv.client.module.ModuleManager;
 import dev.phastixtv.client.module.mods.hud.IHud;
 import dev.phastixtv.mixin.MinecraftClientAccessor;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-
-import java.util.List;
 
 public class FpsHud extends Module {
 
-
     private final DrawContext context;
-    private final float tickDelta;
 
-    public FpsHud(DrawContext context, float tickDelta) {
+    public FpsHud(DrawContext context) {
         super("fps-hud", ModuleCategory.HUD, Mizu.getInstance().getFPS_CONFIG().showFps());
-
         this.context = context;
-        this.tickDelta = tickDelta;
-        render(context, tickDelta);
-
+        render(context);
     }
 
-    public void render(DrawContext context, float tickDelta) {
+    public void render(DrawContext context) {
         if (!Mizu.getInstance().getMinecraftClient().options.hudHidden && Mizu.getInstance().getFPS_CONFIG().textAlpha() > 3 && Mizu.getInstance().getFPS_CONFIG().showFps() && client.player != null) {
 
             double guiScale = Mizu.getInstance().getMinecraftClient().getWindow().getScaleFactor();
@@ -39,7 +33,7 @@ public class FpsHud extends Module {
 
             int textColor = ((Mizu.getInstance().getFPS_CONFIG().textAlpha() & 0xFF) << 24) | Mizu.getInstance().getFPS_CONFIG().textColor();
 
-            context.drawText(client.textRenderer, text, textPosX, textPosY, textColor, Mizu.getInstance().getFPS_CONFIG().drawWithShadows());
+            context.drawText(this.client.textRenderer, text, textPosX, textPosY, textColor, Mizu.getInstance().getFPS_CONFIG().drawWithShadows());
         }
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.client.network.PlayerListEntry;
 import java.nio.charset.MalformedInputException;
 
 public class PingHud extends Module {
+
     private final DrawContext context;
 
     public PingHud(DrawContext context) {
