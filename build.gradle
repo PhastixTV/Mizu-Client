@@ -18,11 +18,11 @@ repositories {
 	// for more information about repositories.
 	maven { url 'https://oss.sonatype.org/content/repositories/snapshots/'}
 	maven { url 'https://litarvan.github.io/maven' }
-	maven { url 'https://maven.wispforest.io' }
-	maven { url "https://maven.shedaniel.me/" }
-	maven { url "https://maven.terraformersmc.com/releases/" }
+	maven {
+		name = 'impactdevelopment-repo'
+		url = 'https://impactdevelopment.github.io/maven/'
+	}
 	mavenCentral()
-	jcenter()
 }
 
 fabricApi {
@@ -44,17 +44,10 @@ dependencies {
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 	implementation 'fr.litarvan:openauth:1.1.6'
 	modImplementation 'com.google.code.findbugs:jsr305:3.0.2'
-
-	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
-	// only if you plan to use owo-config
-	annotationProcessor "io.wispforest:owo-lib:${project.owo_version}"
+	implementation 'com.google.code.gson:gson:2.10.1'
 
 	// include this if you don't want force your users to install owo
 	// sentinel will warn them and give the option to download it automatically
-
-	// owo - lib
-	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
-	include "io.wispforest:owo-sentinel:${project.owo_version}"
 
 	compileOnly 'org.projectlombok:lombok:1.18.32'
 	annotationProcessor 'org.projectlombok:lombok:1.18.32'

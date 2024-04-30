@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "dev.phastixtv.mizu.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "InGameHudMixin",
+    "MinecraftClientMixin",
+    "TitleScreenMixin",
+    "MinecraftClientAccessor",
+    "KeyboardMixin",
+    "CapeLayer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
