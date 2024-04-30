@@ -2,9 +2,7 @@ package dev.phastixtv.mizu.gui.modmenu;
 
 import dev.phastixtv.mizu.Mizu;
 import dev.phastixtv.mizu.module.Category;
-import dev.phastixtv.mizu.module.impl.hud.ClickGui;
 import dev.phastixtv.mizu.util.render.RenderUtil;
-import net.minecraft.client.Keyboard;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
@@ -15,14 +13,14 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModMenu extends Screen {
+public class ModMenuScreen extends Screen {
 
     private final List<CategoryButton> categories;
 
     private final Mizu client = Mizu.INSTANCE;
     private final MinecraftClient mc = client.getMc();
 
-    public ModMenu() {
+    public ModMenuScreen() {
         super(Text.literal("Mod Menu"));
         categories = new ArrayList<>();
 
@@ -50,6 +48,15 @@ public class ModMenu extends Screen {
 
         RenderUtil.fillRoundRect(context, posX + 20, posY + 20, 775, 400, 10, new Color(32, 32, 32, 255).getRGB());
         RenderUtil.fillRoundRect(context, posX, posY, 775, 400, 10, new Color(64, 64, 64, 255).getRGB());
+
+        /*
+        int posX = this.width / 2;
+        int posY = this.height / 2;
+
+        RenderUtil.fillRoundRect(context, posX - 220, posY - 20, 775, 400, 10, new Color(32, 32, 32, 255).getRGB());
+        RenderUtil.fillRoundRect(context, posX - 200, posY - 100, 775, 400, 10, new Color(64, 64, 64, 255).getRGB());
+        RenderUtil.fillRoundRect(context, this.width, this.height, 775, 400, 10, new Color(64, 64, 64, 255).getRGB());
+         */
 
         for (CategoryButton categoryButtons : categories) {
             categoryButtons.render(context, mouseX, mouseY, delta);

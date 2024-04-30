@@ -2,19 +2,15 @@ package dev.phastixtv.mizu;
 
 import com.google.common.eventbus.EventBus;
 import dev.phastixtv.mizu.event.EventManager;
-import dev.phastixtv.mizu.gui.modmenu.ModMenu;
-import dev.phastixtv.mizu.module.Category;
+import dev.phastixtv.mizu.gui.modmenu.ModMenuScreen;
 import dev.phastixtv.mizu.module.ModuleManager;
-import dev.phastixtv.mizu.module.impl.hud.ClickGui;
-import dev.phastixtv.mizu.module.impl.hud.FpsHud;
+import dev.phastixtv.mizu.module.impl.hud.ModMenu;
 import lombok.Getter;
 import lombok.Setter;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.impl.tag.client.ClientTagsImpl;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.session.Session;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
@@ -94,8 +90,8 @@ public class Mizu implements ModInitializer {
     private void registerKey() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (modMenuKey.wasPressed()) {
-                if (mc.currentScreen instanceof ModMenu) return;
-                mc.setScreen(new ModMenu());
+                if (mc.currentScreen instanceof ModMenuScreen) return;
+                mc.setScreen(new ModMenuScreen());
             }
         });
     }
