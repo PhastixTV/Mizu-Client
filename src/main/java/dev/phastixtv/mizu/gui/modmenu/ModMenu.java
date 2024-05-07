@@ -8,6 +8,7 @@ import net.minecraft.client.Keyboard;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
@@ -41,15 +42,14 @@ public class ModMenu extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        double guiScale = this.mc.getWindow().getScaleFactor();
+        int guiScale = (int) this.mc.getWindow().getScaleFactor();
 
-        int maxPosX = this.mc.getWindow().getScaledWidth();
-        int maxPosY = this.mc.getWindow().getScaledHeight();
-        int posX = Math.min(Math.round(200 / (float) guiScale), maxPosX);
-        int posY = Math.min(Math.round(100 / (float) guiScale), maxPosY);
+        int objHeight = 400;
+        int objWidth = 775;
+        int posX = this.width / this.mc.getWindow().getScaledWidth() * guiScale;
+        int posY = this.height / this.mc.getWindow().getScaledHeight() * guiScale;
 
-        RenderUtil.fillRoundRect(context, posX + 20, posY + 20, 775, 400, 10, new Color(32, 32, 32, 255).getRGB());
-        RenderUtil.fillRoundRect(context, posX, posY, 775, 400, 10, new Color(64, 64, 64, 255).getRGB());
+        RenderUtil.fillRoundRect(context, posX + 100, posY + 50, objWidth, objHeight, 10, new Color(28, 28, 28, 255).getRGB());
 
         for (CategoryButton categoryButtons : categories) {
             categoryButtons.render(context, mouseX, mouseY, delta);

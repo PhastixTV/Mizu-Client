@@ -101,6 +101,38 @@ public class RenderUtil {
         finishRendering();
     }
 
+    public static void fillRoundRect(DrawContext context, double x, double y, double width, double height, double radius, int color) {
+        BufferBuilder buf = getBuffer();
+        Matrix4f mat = context.getMatrices().peek().getPositionMatrix();
+
+        buf.begin(VertexFormat.DrawMode.TRIANGLE_FAN, VertexFormats.POSITION_COLOR);
+        buf.vertex(mat, (float) (x + width / 2F), (float) (y + height / 2F), 0).color(color).next();
+
+        double[][] corners = {
+                { x + width - radius, y + radius },
+                { x + width - radius, y + height - radius},
+                { x + radius, y + height - radius },
+                { x + radius, y + radius }
+        };
+
+        for (int corner = 0; corner < 4; corner++) {
+            int cornerStart = (corner - 1) * 90;
+            int cornerEnd = cornerStart + 90;
+            for (int i = cornerStart; i <= cornerEnd; i += 10) {
+                float angle = (float)Math.toRadians(i);
+                double rx = corners[corner][0] + (float)(Math.cos(angle) * radius);
+                double ry = corners[corner][1] + (float)(Math.sin(angle) * radius);
+                buf.vertex(mat, (float) rx, (float) ry, 0).color(color).next();
+            }
+        }
+
+        buf.vertex(mat, (float) corners[0][0], (float) y, 0).color(color).next(); // connect last to first vertex
+
+        beginRendering();
+        drawBuffer(buf);
+        finishRendering();
+    }
+
     public static void fillRoundRectOutline(DrawContext context, int x, int y, int width, int height, int radius, int color, int outlineColor) {
        fillRoundRect(context, x, y, width, height, radius, color);
        drawRoundRect(context, x, y, width, height, radius, outlineColor);
