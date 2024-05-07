@@ -1,6 +1,5 @@
 package dev.phastixtv.mizu.module;
 
-import dev.phastixtv.mizu.Mizu;
 import dev.phastixtv.mizu.module.impl.hud.*;
 import lombok.Getter;
 
@@ -18,10 +17,10 @@ public class ModuleManager {
     public void registerModule() {
         //HUD
         modules.add(new FpsHud());
-        modules.add(new ClickGui());
-        modules.add(new Test1());
-        modules.add(new Test2());
-        modules.add(new Test3());
+        modules.add(new ModMenu());
+        modules.add(new Coordinate());
+        modules.add(new Ping());
+        modules.add(new TargetHud());
 
         //Cosmetics
 

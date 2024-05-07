@@ -13,7 +13,7 @@ import net.minecraft.client.gui.DrawContext;
 import java.awt.*;
 
 @ModuleInfo(
-        name = "FpsHud",
+        name = "Fps",
         description = "It shows your fps on the display",
         category = Category.HUD
 )
@@ -33,7 +33,7 @@ public class FpsHud extends Module {
             int textPosX = Math.min(Math.round(10 / (float) guiScale), maxTextPosX);
             int textPosY = Math.min(Math.round(10 / (float) guiScale), maxTextPosY);
 
-            context.drawText(mc.textRenderer, text, textPosX, textPosY, Color.WHITE.getRGB(), false);
+            context.drawText(mc.textRenderer, text, textPosX, textPosY, Color.WHITE.getRGB(), true);
         }
     }
 }
