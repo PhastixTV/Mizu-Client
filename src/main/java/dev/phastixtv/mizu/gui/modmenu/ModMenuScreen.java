@@ -41,22 +41,12 @@ public class ModMenuScreen extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         int guiScale = (int) this.mc.getWindow().getScaleFactor();
-
-        int objHeight = 400;
-        int objWidth = 775;
-        int posX = this.width / this.mc.getWindow().getScaledWidth() * guiScale;
-        int posY = this.height / this.mc.getWindow().getScaledHeight() * guiScale;
-
-        RenderUtil.fillRoundRect(context, posX + 100, posY + 50, objWidth, objHeight, 10, new Color(28, 28, 28, 255).getRGB());
-
-        /*
+        int objHeight = 700 / guiScale;
+        int objWidth = 1200 / guiScale;
         int posX = this.width / 2;
         int posY = this.height / 2;
 
-        RenderUtil.fillRoundRect(context, posX - 220, posY - 20, 775, 400, 10, new Color(32, 32, 32, 255).getRGB());
-        RenderUtil.fillRoundRect(context, posX - 200, posY - 100, 775, 400, 10, new Color(64, 64, 64, 255).getRGB());
-        RenderUtil.fillRoundRect(context, this.width, this.height, 775, 400, 10, new Color(64, 64, 64, 255).getRGB());
-         */
+        RenderUtil.fillRoundRect(context, posX - 600 / guiScale, posY - 350 / guiScale, objWidth, objHeight, 10, new Color(28, 28, 28, 255).getRGB());
 
         for (CategoryButton categoryButtons : categories) {
             categoryButtons.render(context, mouseX, mouseY, delta);
