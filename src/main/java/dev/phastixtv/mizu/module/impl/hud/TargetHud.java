@@ -7,6 +7,12 @@ import dev.phastixtv.mizu.module.Module;
 import dev.phastixtv.mizu.module.ModuleInfo;
 import dev.phastixtv.mizu.util.render.RenderUtil;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @ModuleInfo(
         name = "TargetHud",
@@ -18,9 +24,5 @@ public class TargetHud extends Module {
     @Subscribe
     public void onDrawOverlay(DrawOverlayEvent event) {
         DrawContext context = event.getContext();
-
-
-
-        //VRenderUtil.drawText(context, "");
     }
 }

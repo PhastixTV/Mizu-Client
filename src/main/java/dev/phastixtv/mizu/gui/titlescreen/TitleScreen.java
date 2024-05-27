@@ -24,14 +24,16 @@ import java.util.ArrayList;
 public class TitleScreen extends Screen {
     public final String[] BUTTONS = {"Singleplayer", "Multiplayer", "Realms", "Options", "Login", "Quit"};
     public final ArrayList<GuiButton> buttonList = new ArrayList<GuiButton>();
+    MinecraftClient mc = Mizu.INSTANCE.getMc();
 
     public TitleScreen() {
         super(Text.literal("I am a title screen!"));
     }
 
-    private Identifier skin = Mizu.INSTANCE.getSkin();
+    private Identifier skin;
 
     public void init() {
+        skin = mc.getSkinProvider().getSkinTextures(mc.getGameProfile()).texture();
         Mizu.INSTANCE.getMc().getWindow().setTitle(Mizu.INSTANCE.getMOD_ID() + " [" + Mizu.INSTANCE.getVersion() + "] by " + Mizu.INSTANCE.getAuthors());
         buttonList.clear();
         int initHeight = this.height / 2;
@@ -45,8 +47,6 @@ public class TitleScreen extends Screen {
         buttonList.add(new GuiButton(3, xMid + 30, initHeight, objWidth, objHeight, BUTTONS[3]));
         buttonList.add(new GuiButton(4, xMid + 90, initHeight, objWidth, objHeight, BUTTONS[4]));
         buttonList.add(new GuiButton(5, xMid + 150, initHeight, objWidth, objHeight, BUTTONS[5]));
-
-        skin = MinecraftClient.getInstance().getSkinProvider().getSkinTextures(new GameProfile(this.client.getSession().getUuidOrNull(), this.client.getName())).texture();
     }
 
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {

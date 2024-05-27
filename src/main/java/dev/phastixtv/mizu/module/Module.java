@@ -25,6 +25,7 @@ public abstract class Module {
     @Getter
     private final Category category;
 
+    @Getter
     @Setter
     private int key;
 
@@ -47,6 +48,10 @@ public abstract class Module {
         onDisable();
     }
 
+    public void onToggle() {
+
+    }
+
     public void onEnable() {
         for (Method method : this.getClass().getMethods()) {
             if (method.isAnnotationPresent(Subscribe.class)) {
@@ -63,10 +68,6 @@ public abstract class Module {
                 break;
             }
         }
-    }
-
-    public void onToggle() {
-
     }
 
     public void toggle() {

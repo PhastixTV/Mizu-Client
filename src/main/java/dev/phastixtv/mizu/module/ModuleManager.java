@@ -17,7 +17,6 @@ public class ModuleManager {
     public void registerModule() {
         //HUD
         modules.add(new FpsHud());
-        modules.add(new ModMenu());
         modules.add(new Coordinate());
         modules.add(new Ping());
         modules.add(new TargetHud());
@@ -44,12 +43,6 @@ public class ModuleManager {
         for(Module m : modules) {
             if(m.isEnabled()) enabledMods.add(m);
         }
-
-        /*
-        if(mc.currentScreen instanceof ClickGuiScreen) {
-            enabledMods.add(getModule(ClickGui.class));
-        }
-         */
 
         return enabledMods;
     }

@@ -27,6 +27,4 @@ public abstract class MinecraftClientMixin {
     public void closeScreen(CallbackInfo info) {
         Mizu.INSTANCE.onClose();
     }
-
-
 }

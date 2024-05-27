@@ -7,8 +7,9 @@
     "MinecraftClientMixin",
     "TitleScreenMixin",
     "MinecraftClientAccessor",
-    "KeyboardMixin",
-    "CapeLayer"
+    "CapeLayer",
+    "MouseMixin",
+    "GameOptionsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

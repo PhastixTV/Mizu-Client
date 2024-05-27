@@ -100,8 +100,6 @@ public class LoginScreen extends Screen {
                 Session.AccountType.MOJANG
         );
         ((MinecraftClientAccessor) client).setSession(session);
-        Mizu.INSTANCE.setSkin(Mizu.INSTANCE.getMc().getSkinProvider().getSkinTextures(
-                new GameProfile(this.client.getSession().getUuidOrNull(), this.client.getName())).texture());
     }
 
     @Override

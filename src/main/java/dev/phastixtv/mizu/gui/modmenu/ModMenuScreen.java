@@ -25,16 +25,16 @@ public class ModMenuScreen extends Screen {
         super(Text.literal("Mod Menu"));
         categories = new ArrayList<>();
 
-        double guiScale = this.mc.getWindow().getScaleFactor();
-
-        int maxPosX = this.mc.getWindow().getScaledWidth();
-        int maxPosY = this.mc.getWindow().getScaledHeight();
-        int posX = Math.min(Math.round(250 / (float) guiScale), maxPosX);
-        int offset = Math.min(Math.round(150 / (float) guiScale), maxPosY);
+        int guiScale = (int) this.mc.getWindow().getScaleFactor();
+        int objHeight = 50 / guiScale;
+        int objWidth = 200 / guiScale;
+        int radius = 20 / guiScale;
+        int posX = this.width / 2 + (400 / guiScale);
+        int posY = this.height / 2 + (225 / guiScale) ;
 
         for (Category category : Category.values()) {
-            categories.add(new CategoryButton(category, posX, offset , 100, 25, 10, new Color(32, 32, 32, 255), new Color(24, 24, 24, 255) ,true));
-            offset += 35;
+            categories.add(new CategoryButton(category, posX, posY, objWidth, objHeight, radius, new Color(32, 32, 32, 255), new Color(24, 24, 24, 255) ,true));
+            posY += 70 / guiScale;
         }
     }
 
@@ -43,10 +43,11 @@ public class ModMenuScreen extends Screen {
         int guiScale = (int) this.mc.getWindow().getScaleFactor();
         int objHeight = 700 / guiScale;
         int objWidth = 1200 / guiScale;
-        int posX = this.width / 2;
-        int posY = this.height / 2;
+        int radius = 20 / guiScale;
+        int posX = this.width / 2 - (600 / guiScale);
+        int posY = this.height / 2 - (350 / guiScale);
 
-        RenderUtil.fillRoundRect(context, posX - 600 / guiScale, posY - 350 / guiScale, objWidth, objHeight, 10, new Color(28, 28, 28, 255).getRGB());
+        RenderUtil.fillRoundRect(context, posX, posY, objWidth, objHeight, radius, new Color(28, 28, 28, 255).getRGB());
 
         for (CategoryButton categoryButtons : categories) {
             categoryButtons.render(context, mouseX, mouseY, delta);

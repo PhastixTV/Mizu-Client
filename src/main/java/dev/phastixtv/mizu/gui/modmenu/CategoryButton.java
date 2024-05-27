@@ -40,22 +40,22 @@ public class CategoryButton {
         
         moduleButtons = new ArrayList<>();
 
-        double guiScale = this.mc.getWindow().getScaleFactor();
-
-        int maxPosX = this.mc.getWindow().getScaledWidth();
-        int maxPosY = this.mc.getWindow().getScaledHeight();
-        int posX = Math.min(Math.round(700 / (float) guiScale), maxPosX);
-        int posY = Math.min(Math.round(150 / (float) guiScale), maxPosY);
+        int guiScale = (int) this.mc.getWindow().getScaleFactor();
+        int objHeight = 200 / guiScale;
+        int objWidth = 200 / guiScale;
+        int objRadius = 20 / guiScale;
+        int posX = x + 300 / guiScale;
+        int posY = y;
 
         int index = 0;
 
         for (Module module : Mizu.INSTANCE.getModuleManager().getModules(category)) {
-            moduleButtons.add(new ModuleButton(module, posX, posY, 100, 100, 10));
+            moduleButtons.add(new ModuleButton(module, posX, posY, objWidth, objHeight, objRadius));
             posX += 125;
             index++;
-            if (index >= 4) {
+            if (index >= 3) {
                 posY += 125;
-                posX -= 4 * 125;
+                posX -= 3 * 125;
                 index = 0;
             }
         }
