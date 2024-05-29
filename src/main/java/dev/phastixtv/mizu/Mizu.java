@@ -25,7 +25,7 @@ public class Mizu implements ModInitializer {
     //Variablen
     @Getter
     @Setter
-    private Boolean needZoom;
+    private boolean needZoom;
     @Setter
     @Getter
     private float zoomFactor;
@@ -41,6 +41,11 @@ public class Mizu implements ModInitializer {
     @Setter
     @Getter
     private Identifier cape;
+    @Getter
+    private Identifier X;
+    @Getter
+    private Identifier O;
+
 
     //Manager
     @Getter
@@ -79,15 +84,12 @@ public class Mizu implements ModInitializer {
 
         logger = LoggerFactory.getLogger(MOD_ID);
 
-        // variables
-        needZoom = false;
-        standardZoomFactor = 45;
-        zoomFactor = standardZoomFactor;
-
         // load images
         TILESCREEN_BACKGROUND = new Identifier("mizu:textures/gui/title/background-mizu.png");
         TILESCREEN_TITLE = new Identifier("mizu:textures/gui/title/mizu-logo-text-tp.png");
         cape = new Identifier("mizu:textures/cosmetics/capes/poison/cape.png");
+        X = new Identifier("mizu:textures/gui/tictactoe/x.png");
+        O = new Identifier("mizu:textures/gui/tictactoe/o.png");
 
         // load classes
         BUS = new EventBus();
@@ -102,7 +104,10 @@ public class Mizu implements ModInitializer {
         keybindHandler.registerKeyBinds();
         KeyInputRegistry.register();
 
-
+        // variables
+        needZoom = false;
+        standardZoomFactor = 45;
+        zoomFactor = standardZoomFactor;
     }
 
     public void onClose() {

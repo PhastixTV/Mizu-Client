@@ -38,14 +38,13 @@ public class KeyInputRegistry {
         final boolean[] isClicked = {false};
 
         ClientTickEvents.END_CLIENT_TICK.register(tick -> {
-            boolean isPressed = binding.wasPressed();
+            boolean isPressed = binding.isPressed();
 
             if (isPressed && !isClicked[0]) {
                 key.pressAction();
                 isClicked[0] = true;
                 key.setPressed(true);
             }
-
 
             if (isPressed) {
                 key.holdAction();

@@ -14,7 +14,7 @@ public abstract class MouseMixin {
 
     @Inject(method = "onMouseScroll", at = @At("HEAD"), cancellable = true)
     public void onScroll(long window, double horizontal, double vertical, CallbackInfo ci) {
-        if (Mizu.INSTANCE.getNeedZoom()) {
+        if (Mizu.INSTANCE.isNeedZoom()) {
             ci.cancel();
 
             if (vertical > 0) {

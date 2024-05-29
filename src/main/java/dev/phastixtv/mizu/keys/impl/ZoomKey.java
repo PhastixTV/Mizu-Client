@@ -1,9 +1,6 @@
 package dev.phastixtv.mizu.keys.impl;
 
-import com.google.common.eventbus.Subscribe;
 import dev.phastixtv.mizu.Mizu;
-import dev.phastixtv.mizu.event.impl.ScrollDownEvent;
-import dev.phastixtv.mizu.event.impl.ScrollUpEvent;
 import dev.phastixtv.mizu.keys.Key;
 import net.minecraft.client.MinecraftClient;
 import org.lwjgl.glfw.GLFW;
@@ -12,7 +9,7 @@ public class ZoomKey implements Key {
 
     boolean pressed = false;
     boolean transitioning = false;
-    boolean smooth = false;
+    boolean smooth = true;
     int fovBeforeZoom;
     long startTime;
     long duration = 140;
@@ -29,11 +26,12 @@ public class ZoomKey implements Key {
 
     @Override
     public void releaseAction() {
-        if (!Mizu.INSTANCE.getNeedZoom() || transitioning) return;
+        if (!Mizu.INSTANCE.isNeedZoom() || transitioning) return;
+
         transitioning = true;
         startTime = System.currentTimeMillis();
 
-        Mizu.SCHEDULER.runtTask(new Runnable() {
+        Mizu.SCHEDULER.runTask(new Runnable() {
             @Override
             public void run() {
                 reverseSmoothTransition((int) Mizu.INSTANCE.getZoomFactor());
@@ -43,7 +41,7 @@ public class ZoomKey implements Key {
 
     @Override
     public void pressAction() {
-        if (Mizu.INSTANCE.getNeedZoom()) return;
+        if (Mizu.INSTANCE.isNeedZoom()) return;
 
         Mizu.INSTANCE.setZoomFactor(Mizu.INSTANCE.getStandardZoomFactor());
 
@@ -55,7 +53,7 @@ public class ZoomKey implements Key {
             Mizu.INSTANCE.getMc().options.smoothCameraEnabled = true;
         }
 
-        Mizu.SCHEDULER.runtTask(new Runnable() {
+        Mizu.SCHEDULER.runTask(new Runnable() {
             @Override
             public void run() {
                 smoothTransition((int) Mizu.INSTANCE.getZoomFactor());
@@ -69,7 +67,7 @@ public class ZoomKey implements Key {
         long elapsedTime = currentTime - startTime;
 
         if (elapsedTime < duration) {
-            float progress = (float) elapsedTime / (float) duration;
+            float progress = (float) elapsedTime / duration;
             int currentFov = (int) (fovBeforeZoom + (zoomFactor - fovBeforeZoom) * progress);
 
             Mizu.INSTANCE.getMc().options.getFov().setValue(currentFov);
@@ -98,7 +96,7 @@ public class ZoomKey implements Key {
                 @Override
                 public void run() {
                     reverseSmoothTransition(targetFov);
-                    Mizu.INSTANCE.setNeedZoom(true);
+                    Mizu.INSTANCE.setNeedZoom(false);
                 }
             }, (long) 0.1);
         } else {
@@ -118,7 +116,7 @@ public class ZoomKey implements Key {
     public void onScrollUp() {
         MinecraftClient mc = Mizu.INSTANCE.getMc();
 
-        Mizu.INSTANCE.setZoomFactor(-1);
+        Mizu.INSTANCE.setZoomFactor(Mizu.INSTANCE.getZoomFactor() - 1);
 
         float minZoom = 10;
         if (Mizu.INSTANCE.getZoomFactor() < minZoom) {
@@ -130,7 +128,7 @@ public class ZoomKey implements Key {
     @Override
     public void onScrollDown() {
         MinecraftClient mc = Mizu.INSTANCE.getMc();
-        Mizu.INSTANCE.setZoomFactor(+1);
+        Mizu.INSTANCE.setZoomFactor(Mizu.INSTANCE.getZoomFactor() + 1);
 
         if (Mizu.INSTANCE.getZoomFactor() > fovBeforeZoom - 16) {
             Mizu.INSTANCE.setZoomFactor(fovBeforeZoom - 16);
@@ -145,6 +143,6 @@ public class ZoomKey implements Key {
 
     @Override
     public void setPressed(boolean pressed) {
-
+        this.pressed = pressed;
     }
 }

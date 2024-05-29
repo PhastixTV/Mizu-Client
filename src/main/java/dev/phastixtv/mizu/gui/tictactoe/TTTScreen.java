@@ -10,6 +10,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,6 @@ public class TTTScreen extends Screen {
     private TTTVerticalLine tttVerticalLine;
     private TTTHorizontalLine tttHorizontalLine;
     private TTTBox tttBox;
-    private ButtonWidget resetButton;
 
     public static int player;
     public static int winner;
@@ -26,7 +26,8 @@ public class TTTScreen extends Screen {
 
     private int guiScale;
 
-    private final List<TTTBox> boxes = new ArrayList<>();
+    @Getter
+    private static final List<TTTBox> boxes = new ArrayList<>();
 
     public TTTScreen() {
         super(Text.of("Tic-Tac-Toe"));
@@ -78,29 +79,27 @@ public class TTTScreen extends Screen {
                 boxY += boxGapY;
             }
         }
-
-        resetButton = ButtonWidget.builder(Text.literal("Reset"), button -> {
-                    TTTFunction.reset();
-                })
-                .dimensions(
-                        this.width / 2 + (100 / guiScale),
-                        this.height / 2 + (100 / guiScale),
-                        200 / guiScale,
-                        200 / guiScale
-                )
-                .tooltip(Tooltip.of(Text.literal("This is a Button to reset the Game")))
-                .build();
-
-        addDrawable(resetButton);
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         for (TTTBox box : boxes) {
+            if (player == 1 && !box.isSelected()) {
+                box.setSelected(true);
+                player = 0;
+            }
             box.render(context);
         }
 
         tttVerticalLine.render(context);
         tttHorizontalLine.render(context);
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        for (TTTBox box : boxes) {
+            box.mouseClicked(mouseX, mouseY, button);
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
     }
 }

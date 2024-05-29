@@ -1,4 +1,4 @@
 package dev.phastixtv.mizu.gui.tictactoe;
 
-public class TTTActionHandler {
+public class TTT {
 }
