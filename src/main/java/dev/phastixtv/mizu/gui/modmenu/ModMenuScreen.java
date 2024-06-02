@@ -24,13 +24,15 @@ public class ModMenuScreen extends Screen {
     public ModMenuScreen() {
         super(Text.literal("Mod Menu"));
         categories = new ArrayList<>();
+    }
 
+    public void init() {
         int guiScale = (int) this.mc.getWindow().getScaleFactor();
         int objHeight = 50 / guiScale;
         int objWidth = 200 / guiScale;
         int radius = 20 / guiScale;
-        int posX = this.width / 2 + (400 / guiScale);
-        int posY = this.height / 2 + (225 / guiScale) ;
+        int posX = this.width / 2 - (550 / guiScale);
+        int posY = this.height / 2 - (300 / guiScale) ;
 
         for (Category category : Category.values()) {
             categories.add(new CategoryButton(category, posX, posY, objWidth, objHeight, radius, new Color(32, 32, 32, 255), new Color(24, 24, 24, 255) ,true));
@@ -43,7 +45,7 @@ public class ModMenuScreen extends Screen {
         int guiScale = (int) this.mc.getWindow().getScaleFactor();
         int objHeight = 700 / guiScale;
         int objWidth = 1200 / guiScale;
-        int radius = 20 / guiScale;
+        int radius = 40 / guiScale;
         int posX = this.width / 2 - (600 / guiScale);
         int posY = this.height / 2 - (350 / guiScale);
 
@@ -56,9 +58,6 @@ public class ModMenuScreen extends Screen {
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (keyCode == GLFW.GLFW_KEY_ESCAPE || keyCode == GLFW.GLFW_KEY_RIGHT_SHIFT) {
-            // client.getModuleManager().getModule(ClickGui.class).toggle();
-        }
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
 

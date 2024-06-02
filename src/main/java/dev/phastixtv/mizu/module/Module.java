@@ -24,13 +24,6 @@ public abstract class Module {
     private final String description;
     @Getter
     private final Category category;
-    @Getter
-    @Setter
-    private int x;
-    @Getter
-    @Setter
-    private int y;
-    private Draggab
 
     @Getter
     @Setter
@@ -43,10 +36,6 @@ public abstract class Module {
         this.name = info.name();
         this.description = info.description();
         this.category = info.category();
-
-        if (category == Category.HUD) {
-
-        }
     }
 
     public void enable() {

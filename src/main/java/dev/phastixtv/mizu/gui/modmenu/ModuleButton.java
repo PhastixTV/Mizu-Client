@@ -35,11 +35,12 @@ public class ModuleButton {
 
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         TextRenderer textRenderer = mc.textRenderer;
+        float guiScale = (float) mc.getWindow().getScaleFactor();
 
         RenderUtil.fillRoundRect(context, x, y, width, height, radius, new Color(35, 35, 35, 255).getRGB());
         RenderUtil.fillRoundBottomRect(context, x, y + 80, width, height - 80, radius, module.isEnabled() ? Color.GREEN.getRGB() : Color.RED.getRGB());
-        RenderUtil.drawCenteredText(context, module.getName(), x + 50, y + 30, 1,true);
-        RenderUtil.drawCenteredText(context, module.isEnabled() ? "Enabled" : "Disabled", x + 50, y + 80, 1,true);
+        RenderUtil.drawCenteredText(context, module.getName(), x + 50, y + 30, 2 / guiScale,true);
+        RenderUtil.drawCenteredText(context, module.isEnabled() ? "Enabled" : "Disabled", x + 50, y + 80,2 / guiScale,true);
     }
 
     public boolean mouseClicked(double mouseX, double mouseY, int button) {

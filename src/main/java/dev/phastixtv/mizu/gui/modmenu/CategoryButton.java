@@ -63,11 +63,12 @@ public class CategoryButton {
     
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         TextRenderer textRenderer = mc.textRenderer;
+        float guiScale = (float) mc.getWindow().getScaleFactor();
         
         RenderUtil.fillRoundRect(context, x, y, width, height, radius, selected ? enabledColor.getRGB() : disabledColor.getRGB());
         
-        context.drawText(textRenderer, category.getName(), x + 30, y + 8, Color.WHITE.getRGB(), textShadow);
-        context.drawItem(category.getItem(), x + 7, y + 4);
+        RenderUtil.drawText(context, category.getName(), x + 30, y + 8, 2 / guiScale, textShadow);
+        RenderUtil.drawItem(context,category.getItem(), x + 7, y + 4, 2 / guiScale);
 
         if (selected) {
             for (ModuleButton button : moduleButtons) {

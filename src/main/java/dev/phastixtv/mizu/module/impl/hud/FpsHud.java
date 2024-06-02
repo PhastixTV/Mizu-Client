@@ -19,23 +19,19 @@ import java.awt.*;
 )
 public class FpsHud extends Module {
 
-    double guiScale = this.mc.getWindow().getScaleFactor();
-
-    String text = this.mc.getCurrentFps() + " FPS";
-
-    int maxTextPosX = this.mc.getWindow().getScaledWidth() - this.mc.textRenderer.getWidth(text);
-    int maxTextPosY = this.mc.getWindow().getScaledHeight() - this.mc.textRenderer.fontHeight;
-    int textPosX = Math.min(Math.round(10 / (float) guiScale), maxTextPosX);
-    int textPosY = Math.min(Math.round(10 / (float) guiScale), maxTextPosY);
-
-    public FpsHud() {
-        super(Math.min(Math.round(10 / (float) .mc.getWindow().getScaleFactor()), maxTextPosX), textPosY);
-    }
-
     @Subscribe
     public void onDrawOverlay(DrawOverlayEvent event) {
         DrawContext context = event.getContext();
         if (!this.mc.options.hudHidden && this.mc.player != null) {
+            double guiScale = this.mc.getWindow().getScaleFactor();
+
+            String text = this.mc.getCurrentFps() + " FPS";
+
+            int maxTextPosX = this.mc.getWindow().getScaledWidth() - this.mc.textRenderer.getWidth(text);
+            int maxTextPosY = this.mc.getWindow().getScaledHeight() - this.mc.textRenderer.fontHeight;
+            int textPosX = Math.min(Math.round(10 / (float) guiScale), maxTextPosX);
+            int textPosY = Math.min(Math.round(10 / (float) guiScale), maxTextPosY);
+
             context.drawText(mc.textRenderer, text, textPosX, textPosY, Color.WHITE.getRGB(), true);
         }
     }

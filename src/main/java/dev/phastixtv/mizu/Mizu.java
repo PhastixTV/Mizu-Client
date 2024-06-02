@@ -100,8 +100,8 @@ public class Mizu implements ModInitializer {
         eventManager = new EventManager();
         moduleManager = new ModuleManager();
         moduleManager.registerModule();
-        keybindHandler = new KeybindHandler();
-        keybindHandler.registerKeyBinds();
+        // keybindHandler = new KeybindHandler();
+        // keybindHandler.registerKeyBinds();
         KeyInputRegistry.register();
 
         // variables
