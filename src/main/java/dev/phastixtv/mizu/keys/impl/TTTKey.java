@@ -1,21 +1,21 @@
 package dev.phastixtv.mizu.keys.impl;
 
 import dev.phastixtv.mizu.Mizu;
-import dev.phastixtv.mizu.gui.modmenu.ModMenuScreen;
+import dev.phastixtv.mizu.gui.tictactoe.TTTScreen;
 import dev.phastixtv.mizu.keys.Key;
 import org.lwjgl.glfw.GLFW;
 
-public class ModMenuKey implements Key {
+public class TTTKey implements Key {
     boolean pressed = false;
 
     @Override
     public int getKey() {
-        return GLFW.GLFW_KEY_RIGHT_SHIFT;
+        return GLFW.GLFW_KEY_M;
     }
 
     @Override
     public String getName() {
-        return "ModMenu";
+        return "TTTKey";
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ModMenuKey implements Key {
 
     @Override
     public void pressAction() {
-        Mizu.INSTANCE.getMc().setScreen(new ModMenuScreen());
+        Mizu.INSTANCE.getMc().setScreen(new TTTScreen());
     }
 
     @Override

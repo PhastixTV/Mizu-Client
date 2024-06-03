@@ -16,7 +16,7 @@ public class ZoomKey implements Key {
 
     @Override
     public int getKey() {
-        return GLFW.GLFW_KEY_V;
+        return GLFW.GLFW_KEY_C;
     }
 
     @Override

@@ -45,7 +45,7 @@ public class ModMenuScreen extends Screen {
         int guiScale = (int) this.mc.getWindow().getScaleFactor();
         int objHeight = 700 / guiScale;
         int objWidth = 1200 / guiScale;
-        int radius = 40 / guiScale;
+        int radius = 20 / guiScale;
         int posX = this.width / 2 - (600 / guiScale);
         int posY = this.height / 2 - (350 / guiScale);
 

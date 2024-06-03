@@ -1,6 +1,7 @@
 package dev.phastixtv.mizu.keys;
 
 import dev.phastixtv.mizu.keys.impl.ModMenuKey;
+import dev.phastixtv.mizu.keys.impl.TTTKey;
 import dev.phastixtv.mizu.keys.impl.ZoomKey;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -18,7 +19,8 @@ public class KeyInputRegistry {
     public static void register() {
         ZoomKey zoomKey = new ZoomKey();
         ModMenuKey modMenuKey = new ModMenuKey();
-        registerKey(zoomKey, modMenuKey);
+        TTTKey tttKey = new TTTKey();
+        registerKey(zoomKey, modMenuKey, tttKey);
     }
 
     private static void registerKey(Key... keyArray) {

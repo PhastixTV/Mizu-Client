@@ -2,21 +2,15 @@ package dev.phastixtv.mizu;
 
 import com.google.common.eventbus.EventBus;
 import dev.phastixtv.mizu.event.EventManager;
-import dev.phastixtv.mizu.gui.modmenu.ModMenuScreen;
-import dev.phastixtv.mizu.keybind.KeybindHandler;
+import dev.phastixtv.mizu.gui.tictactoe.TTT;
 import dev.phastixtv.mizu.keys.KeyInputRegistry;
 import dev.phastixtv.mizu.module.ModuleManager;
 import dev.phastixtv.mizu.util.scheduler.ClientScheduler;
 import lombok.Getter;
 import lombok.Setter;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.Identifier;
-import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,12 +46,21 @@ public class Mizu implements ModInitializer {
     private ModuleManager moduleManager;
     @Getter
     private EventManager eventManager;
+
+    //Some Classes
+    public static EventBus BUS;
     @Getter
-    private KeybindHandler keybindHandler;
+    private MinecraftClient mc;
+    @Getter
+    private Logger logger;
+    @Getter
+    private TTT ttt;
 
     public static ClientScheduler SCHEDULER;
 
     public static Mizu INSTANCE;
+
+
 
     @Getter
     private String
@@ -66,11 +69,6 @@ public class Mizu implements ModInitializer {
             version,
             authors;
 
-    public static EventBus BUS;
-    @Getter
-    private MinecraftClient mc;
-    @Getter
-    private Logger logger;
 
     public void onInitialize() {
         mc = MinecraftClient.getInstance();
@@ -95,13 +93,12 @@ public class Mizu implements ModInitializer {
         BUS = new EventBus();
         BUS.register(this);
         SCHEDULER = new ClientScheduler(3);
+        ttt = new TTT();
 
         // load managers
         eventManager = new EventManager();
         moduleManager = new ModuleManager();
         moduleManager.registerModule();
-        // keybindHandler = new KeybindHandler();
-        // keybindHandler.registerKeyBinds();
         KeyInputRegistry.register();
 
         // variables
