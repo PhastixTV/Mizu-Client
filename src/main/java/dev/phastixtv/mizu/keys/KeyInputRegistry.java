@@ -1,5 +1,6 @@
 package dev.phastixtv.mizu.keys;
 
+import dev.phastixtv.mizu.keys.impl.DraggableHudKey;
 import dev.phastixtv.mizu.keys.impl.ModMenuKey;
 import dev.phastixtv.mizu.keys.impl.TTTKey;
 import dev.phastixtv.mizu.keys.impl.ZoomKey;
@@ -20,7 +21,8 @@ public class KeyInputRegistry {
         ZoomKey zoomKey = new ZoomKey();
         ModMenuKey modMenuKey = new ModMenuKey();
         TTTKey tttKey = new TTTKey();
-        registerKey(zoomKey, modMenuKey, tttKey);
+        DraggableHudKey draggableHudKey = new DraggableHudKey();
+        registerKey(zoomKey, modMenuKey, tttKey, draggableHudKey);
     }
 
     private static void registerKey(Key... keyArray) {

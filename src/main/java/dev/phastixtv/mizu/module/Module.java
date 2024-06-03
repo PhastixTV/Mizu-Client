@@ -27,6 +27,13 @@ public abstract class Module {
 
     @Getter
     @Setter
+    private int posX = 10;
+    @Getter
+    @Setter
+    private int posY = 10;
+
+    @Getter
+    @Setter
     private int key;
 
     public Module() {

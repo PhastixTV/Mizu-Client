@@ -29,8 +29,10 @@ public class Ping extends Module {
 
         int maxTextPosX = this.mc.getWindow().getScaledWidth() - this.mc.textRenderer.getWidth(text);
         int maxTextPosY = this.mc.getWindow().getScaledHeight() - this.mc.textRenderer.fontHeight;
-        int textPosX = Math.min(Math.round(10 / (float) guiScale), maxTextPosX);
-        int textPosY = Math.min(Math.round(25 / (float) guiScale), maxTextPosY);
+        //int textPosX = Math.min(Math.round(10 / (float) guiScale), maxTextPosX);
+        // int textPosY = Math.min(Math.round(10 / (float) guiScale), maxTextPosY);
+        int textPosX = getPosX();
+        int textPosY = getPosY();
 
         RenderUtil.drawText(context, text, textPosX, textPosY, true);
     }

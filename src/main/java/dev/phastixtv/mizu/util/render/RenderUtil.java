@@ -528,6 +528,13 @@ public class RenderUtil {
         drawItem(context, item, x, y, 1.0F);
     }
 
+    public static void drawWall(DrawContext context, int x1, int y1, int x2, int y2, int color) {
+        context.drawHorizontalLine(x1, x2, y1, color);
+        context.drawHorizontalLine(x1, x2, y2, color);
+        context.drawVerticalLine(x1, y1, y2, color);
+        context.drawVerticalLine(x2, y1, y2, color);
+    }
+
 
     // util
 

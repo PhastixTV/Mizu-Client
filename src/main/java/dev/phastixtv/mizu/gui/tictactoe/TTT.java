@@ -55,11 +55,22 @@ public class TTT {
         if (winner != 0) return; // Do not make a move if there's already a winner
 
         Random random = new Random();
-        int index;
+        int index = -1;
 
-        do {
-            index = random.nextInt(9);
-        } while (state[index] != 0);
+        // Prioritize winning move
+        index = findWinningMove(player);
+
+        // If no winning move, prioritize blocking opponent
+        if (index == -1) {
+            index = findWinningMove(player == 1 ? 2 : 1);
+        }
+
+        // If neither winning nor blocking move, choose random empty cell
+        if (index == -1) {
+            do {
+                index = random.nextInt(9);
+            } while (state[index] != 0);
+        }
 
         state[index] = player;
         box[index].setPlayer(player);
@@ -73,6 +84,21 @@ public class TTT {
             player = 1;
         }
     }
+
+    private int findWinningMove(int player) {
+        for (int i = 0; i < 9; i++) {
+            if (state[i] == 0) {
+                state[i] = player;
+                if (checkWin(player)) {
+                    state[i] = 0; // Reset the move
+                    return i;
+                }
+                state[i] = 0; // Reset the move
+            }
+        }
+        return -1;
+    }
+
 
     private boolean checkWin(int player) {
         // Check all win conditions
