@@ -13,6 +13,8 @@ public abstract class Module {
 
     public final Mizu client = Mizu.INSTANCE;
     public final MinecraftClient mc = client.getMc();
+    public int width;
+    public int height;
 
     @Getter
     @Setter
@@ -43,6 +45,12 @@ public abstract class Module {
         this.name = info.name();
         this.description = info.description();
         this.category = info.category();
+
+        init();
+    }
+
+    protected void init() {
+
     }
 
     public void enable() {
