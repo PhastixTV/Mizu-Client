@@ -85,7 +85,7 @@ public class DraggableHudScreen extends Screen {
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        renderEntity(context, 100, 100, 190, 190, 40, 0.0625F, this.client.player);
+       // renderEntity(context, 100, 100, 190, 190, 40, 0.0625F, this.client.player);
         // Draw all modules
         for (Module module : moduleManager.getModules()) {
             if (module.isEnabled()) {

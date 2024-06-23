@@ -34,10 +34,6 @@ public abstract class Module {
     @Setter
     private int posY = 10;
 
-    @Getter
-    @Setter
-    private int key;
-
     public Module() {
         ModuleInfo info = getClass().getAnnotation(ModuleInfo.class);
         Validate.notNull(info, "CONFUSED ANNOTATION EXCEPTION");
